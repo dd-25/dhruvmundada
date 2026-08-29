@@ -28,7 +28,7 @@ export const audienceSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/, "audience id must be kebab-case"),
   label: z.string().min(1),
   modeLabel: z.string().min(1),
-  theme: z.enum(["dark", "light"]),
+  theme: z.enum(["dark", "ink", "paper", "light"]),
   nameFont: z.enum(["mono", "serif"]),
   /** Overrides identity.tagline for this lens. Omit to use the shared one. */
   tagline: z.string().min(1).optional(),

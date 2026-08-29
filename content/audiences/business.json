@@ -2,7 +2,7 @@
   "id": "business",
   "label": "business",
   "modeLabel": "BUSINESS",
-  "theme": "light",
+  "theme": "ink",
   "nameFont": "serif",
   "primaryAction": {
     "label": "book a call",
