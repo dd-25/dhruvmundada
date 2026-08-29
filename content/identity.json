@@ -1,0 +1,14 @@
+{
+  "name": "Dhruv Mundada",
+  "tagline": "Looking to collaborate to solve real-world challenges and make a positive impact.",
+  "deltas": [
+    { "label": "p95 latency", "from": "209ms", "to": "115ms" },
+    { "label": "endpoint load", "from": "17s", "to": "300ms" },
+    { "label": "image size", "from": "3000MB", "to": "220MB" },
+    { "label": "billing cycle", "from": "55min", "to": "7min" }
+  ],
+  "email": "dhruv.mundada04@gmail.com",
+  "phone": "+91 98502 51104",
+  "location": "Bengaluru, India",
+  "resume": "/Dhruv_Mundada_Resume.pdf"
+}

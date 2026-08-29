@@ -10,14 +10,89 @@ body {
   padding: 0;
 }
 
+/* Theme tokens. The audience file names a theme; the shell stamps it on a
+   wrapper as data-theme. Adding a theme means adding one block here. */
+[data-theme="dark"] {
+  --ground: #0a0b0e;
+  --bar: #0e1014;
+  --dot: #191c22;
+  --text: #e8e8ec;
+  --dim: #979aa4;
+  --faint: #585b65;
+  --border: #212329;
+  --rule: #16181d;
+  --accent: #e5ab4a;
+  --accent-ink: #0a0b0e;
+  --accent-soft: #f0c274;
+}
+
+[data-theme="light"] {
+  --ground: #faf8f4;
+  --bar: #ffffff;
+  --dot: #e7e2d8;
+  --text: #131b24;
+  --dim: #4e5b68;
+  --faint: #8a94a0;
+  --border: #e3ded4;
+  --rule: #ece7dd;
+  --accent: #0d6156;
+  --accent-ink: #ffffff;
+  --accent-soft: #0a4a41;
+}
+
 body {
-  background: #0a0b0e;
-  color: #e8e8ec;
-  font-family: system-ui, sans-serif;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* One pulsing dot marks the live item in a section. Slow — a fast blink reads
+   as an error LED. */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.22;
+  }
+}
+
+@keyframes lift {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

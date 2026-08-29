@@ -1,0 +1,148 @@
+.home {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 36px 60px 136px;
+  animation: lift 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.name {
+  margin: 0;
+  line-height: 1.02;
+  color: var(--text);
+}
+
+.name[data-font="mono"] {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 500;
+  font-size: clamp(34px, 5.2vw, 58px);
+  letter-spacing: -0.022em;
+}
+
+.name[data-font="serif"] {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6.2vw, 68px);
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 24px 0 0;
+  max-width: 32ch;
+  font-size: clamp(17px, 1.7vw, 20px);
+  line-height: 1.55;
+  color: var(--dim);
+  text-wrap: pretty;
+}
+
+.proof {
+  margin: 22px 0 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  padding: 13px 20px;
+  border-radius: 3px;
+  min-height: 44px;
+  transition: filter 160ms ease;
+}
+
+.cta:hover {
+  filter: brightness(1.08);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  opacity: 0.55;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  min-height: 44px;
+  transition: opacity 180ms ease;
+}
+
+.social:hover {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .home {
+    padding: 40px 22px;
+  }
+  .actions {
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .socialLabel {
+    display: none;
+  }
+}
+
+/* Signature: every result on the résumé is a measured reduction. The strip
+   states them as deltas — old value dimmed, new value in accent. */
+.deltas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.delta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+.deltaLabel {
+  color: var(--faint);
+}
+
+.deltaFrom {
+  color: var(--faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  opacity: 0.8;
+}
+
+.deltaArrow {
+  color: var(--faint);
+}
+
+.deltaTo {
+  color: var(--accent);
+}

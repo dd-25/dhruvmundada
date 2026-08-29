@@ -1,0 +1,291 @@
+.frame {
+  padding: 44px 36px 40px;
+  max-width: 1180px;
+  width: 100%;
+  animation: lift 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin: 0;
+}
+
+.count {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* One record */
+.row {
+  display: grid;
+  grid-template-columns: 172px minmax(0, 1fr);
+  gap: 36px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 4px;
+}
+
+.period {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--dim);
+}
+
+.period[data-current="true"] {
+  color: var(--accent);
+}
+
+.kind {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  min-width: 0;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-wrap: wrap;
+  font-size: 19px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.sep {
+  color: var(--faint);
+}
+
+.soft {
+  color: var(--dim);
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.point {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.bullet {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--faint);
+  opacity: 0.6;
+}
+
+.pointText {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--dim);
+  max-width: 78ch;
+  text-wrap: pretty;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 3px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.chip {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--dim);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3px 8px;
+}
+
+.link {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link:hover {
+  color: var(--accent-soft);
+}
+
+.muted {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.empty {
+  padding: 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 54ch;
+}
+
+.emptyTitle {
+  font-size: 17px;
+  color: var(--text);
+}
+
+.emptyBody {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--dim);
+}
+
+/* Rendered markdown detail */
+.detail {
+  margin-top: 4px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--dim);
+  max-width: 78ch;
+}
+
+.detail :global(h2),
+.detail :global(h3) {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  margin: 18px 0 6px;
+}
+
+.detail :global(p) {
+  margin: 0 0 10px;
+}
+
+.detail :global(a) {
+  color: var(--accent);
+}
+
+.detail :global(code) {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1px 5px;
+}
+
+@media (max-width: 900px) {
+  .frame {
+    padding: 30px 22px 34px;
+  }
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .meta {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 0;
+  }
+  .heading {
+    font-size: 17px;
+  }
+}
+
+/* Progressive disclosure. Native <details> — expand/collapse with zero JS,
+   keyboard accessible, and it survives static export unchanged. */
+.disclosure {
+  width: 100%;
+}
+
+.summary {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::after {
+  content: "→";
+  transition: transform 180ms ease;
+}
+
+.disclosure[open] .summary::after {
+  transform: rotate(90deg);
+}
+
+.summary:hover {
+  color: var(--accent-soft);
+}
+
+/* Row without a metadata column, for content that carries no date or type. */
+.rowWide {
+  display: block;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+}

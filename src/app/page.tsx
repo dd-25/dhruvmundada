@@ -1,12 +1,14 @@
-export default function Home() {
+import { Home } from "@/components/Home";
+import { Shell } from "@/components/Shell";
+import { getAudiences, getDefaultAudience } from "@/lib/content/loader";
+
+/** The default lens also lives at its own /<id>/ route; this is the short URL. */
+export default async function RootPage() {
+  const [audience, audiences] = await Promise.all([getDefaultAudience(), getAudiences()]);
+
   return (
-    <main style={{ padding: "80px 40px", fontFamily: "ui-monospace, monospace" }}>
-      <h1 style={{ margin: 0, fontSize: 20, fontWeight: 500 }}>
-        deploy pipeline ok
-      </h1>
-      <p style={{ marginTop: 12, color: "#979aa4", fontSize: 14 }}>
-        If this is styled and not white-on-white, basePath and .nojekyll are correct.
-      </p>
-    </main>
+    <Shell audience={audience} audiences={audiences}>
+      <Home audience={audience} />
+    </Shell>
   );
 }
