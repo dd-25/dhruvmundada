@@ -8,7 +8,7 @@
   color: var(--text);
   /* The lens change swaps every token at once. Easing the large surfaces takes
      the flash out of it; small text snapping is not what the eye notices. */
-  transition: background-color 300ms ease, color 300ms ease;
+  transition: background-color 420ms cubic-bezier(0.4, 0, 0.2, 1), color 420ms ease;
 }
 
 .top {
@@ -59,7 +59,7 @@
   border: 1px solid var(--border);
   border-radius: 3px;
   overflow: hidden;
-  transition: background-color 300ms ease, border-color 300ms ease;
+  transition: background-color 420ms cubic-bezier(0.4, 0, 0.2, 1), border-color 420ms ease;
 }
 
 .toggleOption {
@@ -92,7 +92,7 @@
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 13px;
   padding-bottom: env(safe-area-inset-bottom);
-  transition: background-color 300ms ease, border-color 300ms ease;
+  transition: background-color 420ms cubic-bezier(0.4, 0, 0.2, 1), border-color 420ms ease;
 }
 
 .mode {
@@ -105,7 +105,7 @@
   letter-spacing: 0.11em;
   font-size: 11px;
   flex-shrink: 0;
-  transition: background-color 300ms ease, color 300ms ease, filter 160ms ease;
+  transition: background-color 420ms cubic-bezier(0.4, 0, 0.2, 1), color 420ms ease, filter 160ms ease;
 }
 
 .mode:hover {

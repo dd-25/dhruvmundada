@@ -27,14 +27,14 @@ body {
 }
 
 [data-theme="light"] {
-  --ground: #efebe2;
+  --ground: #faf8f4;
   --bar: #ffffff;
-  --dot: #ddd7ca;
-  --text: #171f28;
-  --dim: #4d5a66;
-  --faint: #7f8994;
-  --border: #ddd7c9;
-  --rule: #e6e0d4;
+  --dot: #e7e2d8;
+  --text: #131b24;
+  --dim: #4e5b68;
+  --faint: #8a94a0;
+  --border: #e3ded4;
+  --rule: #ece7dd;
   --accent: #0d6156;
   --accent-ink: #ffffff;
   --accent-soft: #0a4a41;
@@ -42,7 +42,7 @@ body {
 
 body {
   background: var(--ground);
-  transition: background-color 300ms ease;
+  transition: background-color 420ms cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
