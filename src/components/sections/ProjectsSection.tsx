@@ -29,7 +29,7 @@ export default async function ProjectsSection({ audienceId }: { audienceId: stri
 
               <div className={styles.body}>
                 <h2 className={styles.heading}>
-                  {project.current ? <span className={styles.dot} title="current" /> : null}
+                  {project.current ? <span className={styles.dot} role="img" aria-label="current" /> : null}
                   {project.url ? (
                     <a
                       className={styles.strong}

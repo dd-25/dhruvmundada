@@ -30,8 +30,8 @@ export function EmptySection({ title, body }: { title: string; body: string }) {
 export function Points({ points }: { points: string[] }) {
   return (
     <ul className={styles.points}>
-      {points.map((point) => (
-        <li key={point} className={styles.point}>
+      {points.map((point, index) => (
+        <li key={index} className={styles.point}>
           <span className={styles.bullet}>—</span>
           <span className={styles.pointText}>{point}</span>
         </li>
@@ -44,8 +44,8 @@ export function Chips({ items }: { items: string[] }) {
   if (items.length === 0) return null;
   return (
     <div className={styles.chips}>
-      {items.map((item) => (
-        <span key={item} className={styles.chip}>
+      {items.map((item, index) => (
+        <span key={`${item}-${index}`} className={styles.chip}>
           {item}
         </span>
       ))}

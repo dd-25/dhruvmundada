@@ -36,7 +36,7 @@ export default async function LearningsSection({ audienceId }: { audienceId: str
 
               <div className={styles.body}>
                 <h2 className={styles.heading}>
-                  {note.current ? <span className={styles.dot} title="most recent" /> : null}
+                  {note.current ? <span className={styles.dot} role="img" aria-label="most recent" /> : null}
                   <span className={styles.strong}>{note.title}</span>
                 </h2>
 

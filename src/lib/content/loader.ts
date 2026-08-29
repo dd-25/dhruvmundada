@@ -65,7 +65,12 @@ async function readCollection<T extends { order: number; current: boolean }>(
   let files: string[];
   try {
     files = (await readdir(path.join(CONTENT_DIR, dir))).filter((f) => f.endsWith(".md"));
-  } catch {
+  } catch (cause) {
+    // A missing directory means "nothing written yet" — git does not track empty
+    // dirs, so content/writing and content/clients legitimately vanish on checkout.
+    // Anything else (permissions, a bad mount) must fail the build, not quietly
+    // render an empty section.
+    if ((cause as NodeJS.ErrnoException).code !== "ENOENT") throw cause;
     return [];
   }
 
@@ -164,6 +169,17 @@ export const getAudiences = (): Promise<Audience[]> =>
         "audiences",
         `exactly one audience must set default: true — found ${defaults.length}`,
       );
+    }
+
+    const known = new Set<string>((await getSocials()).map((s) => s.id));
+    for (const audience of audiences) {
+      const unknown = (audience.socials ?? []).filter((id) => !known.has(id));
+      if (unknown.length > 0) {
+        throw new ContentError(
+          `audiences/${audience.id}.json`,
+          `socials lists ${unknown.join(", ")}, which socials.json does not define`,
+        );
+      }
     }
 
     return byOrder(audiences);

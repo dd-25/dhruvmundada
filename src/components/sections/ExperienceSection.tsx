@@ -26,7 +26,7 @@ export default async function ExperienceSection({ audienceId }: { audienceId: st
 
               <div className={styles.body}>
                 <h2 className={styles.heading}>
-                  {role.current ? <span className={styles.dot} title="current" /> : null}
+                  {role.current ? <span className={styles.dot} role="img" aria-label="current" /> : null}
                   <span className={styles.strong}>{role.role}</span>
                   <span className={styles.sep}>·</span>
                   {role.url ? (

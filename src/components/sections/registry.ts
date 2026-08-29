@@ -28,8 +28,6 @@ export const SECTIONS = {
 
 export type SectionId = keyof typeof SECTIONS;
 
-export const SECTION_IDS = Object.keys(SECTIONS) as SectionId[];
-
 export function isSectionId(id: string): id is SectionId {
   return id in SECTIONS;
 }

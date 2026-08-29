@@ -39,8 +39,8 @@ export async function Home({ audience }: { audience: Audience }) {
               key={social.id}
               className={styles.social}
               href={social.url}
-              target={social.url.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
+              target={isExternal(social.url) ? "_blank" : undefined}
+              rel={isExternal(social.url) ? "noreferrer" : undefined}
               title={social.label}
             >
               <SocialIcon id={social.id} />

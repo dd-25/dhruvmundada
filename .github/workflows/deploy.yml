@@ -28,6 +28,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npx eslint src --max-warnings=0
+
       # Content is validated here. A malformed file in content/ fails this step,
       # the deploy never runs, and the live site stays on the last good build.
       - run: npm run build

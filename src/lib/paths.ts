@@ -1,5 +1,8 @@
 const BASE_PATH = process.env.BASE_PATH ?? "";
 
+/** Absolute origin + basePath. Used by robots.txt, the sitemap and OG tags. */
+export const SITE_URL = `https://dd-25.github.io${BASE_PATH}`;
+
 /**
  * Prefixes basePath onto a raw href. Only needed for paths Next does not
  * rewrite itself — files in public/ referenced outside next/image, and any

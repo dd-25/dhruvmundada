@@ -136,11 +136,6 @@
   border-bottom-color: var(--accent);
 }
 
-.navNum {
-  color: var(--accent);
-  font-size: 11px;
-}
-
 .barRight {
   display: flex;
   align-items: center;
@@ -168,8 +163,7 @@
     padding: 20px 22px 0;
   }
   .toggleLabel,
-  .barPath,
-  .navNum {
+  .barPath {
     display: none;
   }
   .nav {

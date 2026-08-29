@@ -37,14 +37,6 @@
   text-wrap: pretty;
 }
 
-.proof {
-  margin: 22px 0 0;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--faint);
-}
-
 .actions {
   display: flex;
   align-items: center;

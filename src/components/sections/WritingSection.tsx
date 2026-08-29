@@ -25,7 +25,7 @@ export default async function WritingSection({ audienceId }: { audienceId: strin
 
               <div className={styles.body}>
                 <h2 className={styles.heading}>
-                  {post.current ? <span className={styles.dot} title="latest" /> : null}
+                  {post.current ? <span className={styles.dot} role="img" aria-label="latest" /> : null}
                   {post.external ? (
                     <a
                       className={styles.strong}
