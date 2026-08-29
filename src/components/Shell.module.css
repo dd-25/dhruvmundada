@@ -55,9 +55,11 @@
 
 .toggleGroup {
   display: flex;
+  background: var(--bar);
   border: 1px solid var(--border);
   border-radius: 3px;
   overflow: hidden;
+  transition: background-color 300ms ease, border-color 300ms ease;
 }
 
 .toggleOption {

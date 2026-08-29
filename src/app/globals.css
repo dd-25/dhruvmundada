@@ -27,14 +27,14 @@ body {
 }
 
 [data-theme="light"] {
-  --ground: #eeeae1;
-  --bar: #f6f3ec;
-  --dot: #dcd6c9;
+  --ground: #efebe2;
+  --bar: #ffffff;
+  --dot: #ddd7ca;
   --text: #171f28;
   --dim: #4d5a66;
-  --faint: #838d98;
-  --border: #d8d2c5;
-  --rule: #e3ddd1;
+  --faint: #7f8994;
+  --border: #ddd7c9;
+  --rule: #e6e0d4;
   --accent: #0d6156;
   --accent-ink: #ffffff;
   --accent-soft: #0a4a41;
