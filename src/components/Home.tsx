@@ -1,7 +1,7 @@
 import { ArrowIcon, DownloadIcon, SocialIcon } from "@/components/Icons";
 import { getIdentity, getSocials } from "@/lib/content/loader";
 import type { Audience } from "@/lib/content/schema";
-import { assetPath } from "@/lib/paths";
+import { assetPath, isExternal } from "@/lib/paths";
 
 import styles from "./Home.module.css";
 
@@ -23,7 +23,12 @@ export async function Home({ audience }: { audience: Audience }) {
 
 
       <div className={styles.actions}>
-        <a className={styles.cta} href={assetPath(action.href)}>
+        <a
+          className={styles.cta}
+          href={assetPath(action.href)}
+          target={isExternal(action.href) ? "_blank" : undefined}
+          rel={isExternal(action.href) ? "noreferrer" : undefined}
+        >
           {action.label}
           {action.glyph === "↓" ? <DownloadIcon size={15} /> : <ArrowIcon size={15} />}
         </a>

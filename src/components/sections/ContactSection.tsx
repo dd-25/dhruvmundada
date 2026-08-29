@@ -72,8 +72,13 @@ export default async function ContactSection({ audienceId }: { audienceId: strin
           </div>
           <div className={styles.body}>
             <p className={styles.pointText}>{identity.location}</p>
-            <a className={styles.link} href={assetPath(identity.resume)}>
-              download résumé (PDF)
+            <a
+              className={styles.link}
+              href={assetPath(identity.resume)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              view résumé ↗
             </a>
           </div>
         </div>

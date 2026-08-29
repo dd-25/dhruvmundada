@@ -10,6 +10,10 @@ export function assetPath(href: string): string {
   return `${BASE_PATH}${href}`;
 }
 
+export function isExternal(href: string): boolean {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 /** Route for an audience home. The default audience also lives at "/". */
 export function audienceHref(audienceId: string): string {
   return `/${audienceId}`;

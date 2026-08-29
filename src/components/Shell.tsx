@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { DownloadIcon, ArrowIcon } from "@/components/Icons";
 import type { Audience } from "@/lib/content/schema";
-import { assetPath, audienceHref, sectionHref } from "@/lib/paths";
+import { assetPath, audienceHref, isExternal, sectionHref } from "@/lib/paths";
 
 import styles from "./Shell.module.css";
 
@@ -75,7 +75,12 @@ export function Shell({ audience, audiences, activeSection, children }: ShellPro
 
         <div className={styles.barRight}>
           <span className={styles.barPath}>{barPath}</span>
-          <a className={styles.barAction} href={assetPath(action.href)}>
+          <a
+            className={styles.barAction}
+            href={assetPath(action.href)}
+            target={isExternal(action.href) ? "_blank" : undefined}
+            rel={isExternal(action.href) ? "noreferrer" : undefined}
+          >
             {action.glyph === "↓" ? <DownloadIcon /> : <ArrowIcon />}
             {action.label}
           </a>

@@ -5,9 +5,9 @@
   "theme": "dark",
   "nameFont": "mono",
   "primaryAction": {
-    "label": "résumé",
-    "glyph": "↓",
-    "href": "/Dhruv_Mundada_Resume.pdf"
+    "label": "view résumé",
+    "glyph": "→",
+    "href": "https://drive.google.com/file/d/1sEhr3lHASm31chk1fNq0XWMdB-g9XOQM/view?usp=sharing"
   },
   "sections": [
     "experience",
