@@ -26,51 +26,22 @@ body {
   --accent-soft: #f0c274;
 }
 
-/* Business candidate A — "ink". Deep navy, cool teal, cream text.
-   Different temperature and accent from engineer's neutral black + amber, so
-   the two lenses read as different registers without either being bright. */
-[data-theme="ink"] {
-  --ground: #0f1721;
-  --bar: #141e2a;
-  --dot: #1c2734;
-  --text: #eae5dc;
-  --dim: #9ba6b2;
-  --faint: #7c8896;
-  --border: #24303e;
-  --rule: #1a2430;
-  --accent: #5eb8a4;
-  --accent-ink: #0f1721;
-  --accent-soft: #86cfbe;
-}
-
-/* Business candidate B — "paper". The light direction done properly: warmth
-   comes from chroma, not from lightness. Reads as paper rather than a screen. */
-[data-theme="paper"] {
-  --ground: #f2ece0;
-  --bar: #fbf7ef;
-  --dot: #ddd3bf;
-  --text: #292317;
-  --dim: #5b5242;
-  --faint: #736a58;
-  --border: #ddd2bd;
-  --rule: #e9e1d1;
-  --accent: #0d6156;
-  --accent-ink: #fbf7ef;
-  --accent-soft: #0a4a41;
-}
-
+/* Business lens. Bright and neutral on purpose — pure white bar, near-white
+   ground, no cream or beige cast anywhere. The only colour in the field is the
+   accent: a deep green, because blue reads as every consultancy template and
+   warm accents belong to the engineer lens. */
 [data-theme="light"] {
-  --ground: #faf8f4;
-  --bar: #ffffff;
-  --dot: #e7e2d8;
-  --text: #131b24;
-  --dim: #4e5b68;
-  --faint: #8a94a0;
-  --border: #e3ded4;
-  --rule: #ece7dd;
-  --accent: #0d6156;
+  --ground: #eceef0;
+  --bar: #f8f9fa;
+  --dot: #c2d9d1;
+  --text: #14171a;
+  --dim: #4a5058;
+  --faint: #616870;
+  --border: #d8dce0;
+  --rule: #e3e6e9;
+  --accent: #0e6350;
   --accent-ink: #ffffff;
-  --accent-soft: #0a4a41;
+  --accent-soft: #0a4a3c;
 }
 
 body {
@@ -98,15 +69,18 @@ a {
   border-radius: 2px;
 }
 
-/* One pulsing dot marks the live item in a section. Slow — a fast blink reads
-   as an error LED. */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+/* Ring radiating off the live marker. Slow, and it rests for the back half of
+   the cycle — a continuous ripple reads as a loading spinner, a spaced pulse
+   reads as a heartbeat. */
+@keyframes beacon {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
   }
-  50% {
-    opacity: 0.22;
+  60%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
 

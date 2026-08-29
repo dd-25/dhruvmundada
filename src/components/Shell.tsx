@@ -37,7 +37,7 @@ export function Shell({ audience, audiences, activeSection, children }: ShellPro
         </Link>
 
         <nav className={styles.toggle} aria-label="View this site as">
-          <span className={styles.toggleLabel}>view me as</span>
+          <span className={styles.toggleLabel}>me as</span>
           <div className={styles.toggleGroup}>
             {audiences.map((option) => (
               <Link

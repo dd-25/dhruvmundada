@@ -82,13 +82,25 @@
   font-size: 19px;
 }
 
+/* Live marker. The core stays solid — a dot that fades out reads as a render
+   glitch — and a ring radiates off it instead, which is the shape people
+   already know means "this one is on right now". */
 .dot {
+  position: relative;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
-  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: beacon 2.4s ease-out infinite;
 }
 
 .strong {
