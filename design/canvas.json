@@ -1,0 +1,39 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1280, "h": 800, "title": "Home — engineer (toggle is live)", "is_interactive": true },
+    { "file": "HomeClient.dc.html", "x": 1400, "y": 0, "w": 1280, "h": 800, "title": "Home — client (serif)" },
+    { "file": "Experience.dc.html", "x": 0, "y": 980, "w": 1280, "h": 900, "title": "Section — short points, click for depth" },
+    { "file": "Mobile.dc.html", "x": 1400, "y": 980, "w": 390, "h": 844, "title": "Home — phone" }
+  ],
+  "annotations": [
+    {
+      "id": "lens-note",
+      "x": 0,
+      "y": -170,
+      "w": 480,
+      "text": "The two homes side by side.\nThe lens changes the TYPEFACE, not just the color — mono for engineers, serif for clients.\nThat is a register change a recruiter or a client actually feels.\nToggle on the left artboard is live; click it."
+    },
+    {
+      "id": "cta-note",
+      "x": 1400,
+      "y": -170,
+      "w": 460,
+      "text": "Per-lens primary action.\nEngineer gets résumé. Client gets book a call.\nBefore, both lenses showed the same four icons — the toggle changed the paint and nothing else.\nrésumé also sits in the bar's right corner, replacing the fake ln/col readout."
+    },
+    {
+      "id": "section-note",
+      "x": 0,
+      "y": 810,
+      "w": 470,
+      "text": "Short points only. One pulsing dot marks the current role.\nRecords with a write-up get read more. Records without get a fallback line and no dead link — the loader decides, not you.\nSchema allows exactly one current:true per collection. Two dots and the signal is worthless."
+    },
+    {
+      "id": "content-note",
+      "x": 1400,
+      "y": 810,
+      "w": 400,
+      "text": "Still every placeholder in brackets.\nTaglines shown are my drafts, not yours — I wrote them to show the shape a real one has.\nSend years, role, company, domain and I replace all of it."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500&display=swap">
+  <style>
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    a { color: #e5ab4a; text-decoration: none; }
+    a:hover { color: #f0c274; }
+    .lift { animation: lift 460ms cubic-bezier(.22,.61,.36,1) both; }
+    @keyframes lift { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+    .pulse { animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.22; } }
+    @media (prefers-reduced-motion: reduce) { .pulse, .lift { animation: none; } }
+  </style>
+</helmet>
+
+<div style="width: 1280px; height: 900px; position: relative; overflow: hidden; font-family: 'IBM Plex Sans', system-ui, sans-serif; background-color: #0a0b0e; background-image: radial-gradient(circle, #191c22 1px, transparent 1px); background-size: 26px 26px;">
+
+  <div style="position: absolute; top: 28px; right: 36px; display: flex; align-items: center; gap: 14px; z-index: 2;">
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.09em; color: #585b65;">VIEWING AS</span>
+    <div style="display: flex; border: 1px solid #212329; border-radius: 3px; overflow: hidden;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.05em; padding: 7px 16px; color: #585b65;">client</div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.05em; padding: 7px 16px; background: #e5ab4a; color: #0a0b0e;">engineer</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 30px; left: 136px;">
+    <a href="#" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: #e8e8ec;">Dhruv Mundada</a>
+  </div>
+
+  <div class="lift" style="position: absolute; top: 108px; left: 136px; right: 136px; bottom: 46px; overflow: hidden;">
+
+    <div style="display: flex; align-items: baseline; gap: 18px; padding-bottom: 14px; border-bottom: 1px solid #212329;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #e5ab4a;">EXPERIENCE</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #585b65;">3 entries</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+
+      <sc-for list="{{roles}}" as="r" hint-placeholder-count="3">
+        <div style="display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 36px; padding: 28px 0; border-bottom: 1px solid #16181d;">
+
+          <div style="display: flex; flex-direction: column; gap: 7px; padding-top: 4px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: {{r.periodColor}}; letter-spacing: 0.02em;">{{r.period}}</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #585b65; letter-spacing: 0.08em;">{{r.kind}}</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 13px;">
+
+            <div style="display: flex; align-items: center; gap: 11px;">
+              <sc-if value="{{r.current}}" hint-placeholder-val="{{ true }}">
+                <span class="pulse" style="width: 7px; height: 7px; border-radius: 50%; background: #e5ab4a; display: block; flex-shrink: 0;" title="current"></span>
+              </sc-if>
+              <span style="font-size: 19px; font-weight: 500; color: #e8e8ec;">{{r.role}}</span>
+              <span style="font-size: 19px; color: #4a4d56;">·</span>
+              <span style="font-size: 19px; color: #979aa4;">{{r.company}}</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <sc-for list="{{r.points}}" as="p" hint-placeholder-count="2">
+                <div style="display: flex; gap: 12px; align-items: baseline;">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #3d4049;">—</span>
+                  <span style="font-size: 15px; line-height: 1.5; color: #979aa4; max-width: 76ch; text-wrap: pretty;">{{p}}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 3px;">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+                <sc-for list="{{r.stack}}" as="s" hint-placeholder-count="3">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.03em; color: #7b7e89; border: 1px solid #212329; border-radius: 2px; padding: 3px 8px;">{{s}}</span>
+                </sc-for>
+              </div>
+
+              <sc-if value="{{r.hasDetail}}" hint-placeholder-val="{{ true }}">
+                <a href="#" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; display: flex; align-items: center; gap: 6px;">read more <span style="font-size: 13px;">→</span></a>
+              </sc-if>
+              <sc-if value="{{r.noDetail}}" hint-placeholder-val="{{ true }}">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4a4d56;">no write-up yet</span>
+              </sc-if>
+            </div>
+
+          </div>
+
+        </div>
+      </sc-for>
+
+    </div>
+
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px; display: flex; align-items: stretch; background: #0e1014; border-top: 1px solid #212329; font-family: 'IBM Plex Mono', monospace; font-size: 13px;">
+
+    <div style="display: flex; align-items: center; padding: 0 20px; background: #e5ab4a; color: #0a0b0e; font-weight: 600; letter-spacing: 0.11em; font-size: 11px;">ENGINEER</div>
+
+    <div style="display: flex; align-items: center; gap: 26px; padding: 0 26px; flex-grow: 1;">
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="4">
+        <a href="#" style="display: flex; align-items: baseline; gap: 6px; opacity: {{n.dim}}; border-bottom: 2px solid {{n.rule}}; padding: 3px 0 1px 0;">
+          <span style="color: #e5ab4a; font-size: 11px;">{{n.num}}</span>
+          <span style="color: #e8e8ec;">{{n.label}}</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px; padding: 0 24px; font-size: 12px;">
+      <span style="color: #585b65;">~/dhruv-mundada/experience</span>
+      <a href="#" style="display: flex; align-items: center; gap: 7px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        résumé
+      </a>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const items = ['experience', 'projects', 'writing', 'contact'];
+
+    const roles = [
+      {
+        period: '2024 — present',
+        kind: 'FULL-TIME',
+        current: true,
+        role: '[YOUR ROLE]',
+        company: '[COMPANY]',
+        points: [
+          '[What you owned. One line, plain words.]',
+          '[The outcome, with a number in it.]'
+        ],
+        stack: ['[Tech]', '[Tech]', '[Tech]'],
+        detail: true
+      },
+      {
+        period: '2022 — 2024',
+        kind: 'FULL-TIME',
+        current: false,
+        role: '[YOUR ROLE]',
+        company: '[COMPANY]',
+        points: [
+          '[The hardest call you made here.]',
+          '[The outcome, with a number in it.]'
+        ],
+        stack: ['[Tech]', '[Tech]', '[Tech]'],
+        detail: true
+      },
+      {
+        period: '2021 — 2022',
+        kind: 'FOUNDING',
+        current: false,
+        role: '[YOUR ROLE]',
+        company: '[COMPANY]',
+        points: [
+          '[What existed when you left that did not exist when you arrived.]'
+        ],
+        stack: ['[Tech]', '[Tech]'],
+        detail: false
+      }
+    ];
+
+    return {
+      nav: items.map((label, i) => ({
+        label,
+        num: i + 1,
+        dim: label === 'experience' ? '1' : '0.6',
+        rule: label === 'experience' ? '#e5ab4a' : 'transparent'
+      })),
+      roles: roles.map((r) => ({
+        ...r,
+        hasDetail: r.detail,
+        noDetail: !r.detail,
+        periodColor: r.current ? '#e5ab4a' : '#979aa4'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

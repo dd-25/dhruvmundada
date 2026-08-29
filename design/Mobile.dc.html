@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500&display=swap">
+  <style>
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    a { color: #e5ab4a; text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; font-family: 'IBM Plex Sans', system-ui, sans-serif; background-color: #0a0b0e; background-image: radial-gradient(circle, #191c22 1px, transparent 1px); background-size: 22px 22px;">
+
+  <div style="position: absolute; top: 26px; left: 26px; right: 26px; display: flex; justify-content: flex-end;">
+    <div style="display: flex; border: 1px solid #212329; border-radius: 3px; overflow: hidden;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em; padding: 9px 16px; color: #585b65;">client</div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em; padding: 9px 16px; background: #e5ab4a; color: #0a0b0e;">engineer</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; inset: 0 26px 52px 26px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+
+    <h1 style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 34px; line-height: 1.1; letter-spacing: -0.022em; color: #e8e8ec;">Dhruv<br>Mundada</h1>
+
+    <p style="margin: 20px 0 0 0; font-size: 17px; line-height: 1.55; color: #979aa4; text-wrap: pretty;">I build backend systems and lead the people who ship them.</p>
+
+    <a href="#" style="display: flex; align-items: center; gap: 9px; background: #e5ab4a; color: #0a0b0e; font-family: 'IBM Plex Mono', monospace; font-size: 14px; padding: 14px 22px; border-radius: 3px; margin-top: 30px;">
+      résumé <span style="font-size: 15px;">↓</span>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 24px; margin-top: 30px;">
+      <a href="#" style="display: flex; color: #e8e8ec; opacity: 0.6;" title="GitHub">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="#" style="display: flex; color: #e8e8ec; opacity: 0.6;" title="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" style="display: flex; color: #e8e8ec; opacity: 0.6;" title="X">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.5 9.8L3.4 21h2.2l6-6.6 5 6.6H21l-7.9-10.3L20.5 3h-2.2l-5.5 6L8.3 3z"/></svg>
+      </a>
+      <a href="#" style="display: flex; color: #e8e8ec; opacity: 0.6;" title="Email">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 52px; display: flex; align-items: stretch; background: #0e1014; border-top: 1px solid #212329; font-family: 'IBM Plex Mono', monospace; font-size: 12px;">
+    <div style="display: flex; align-items: center; padding: 0 13px; background: #e5ab4a; color: #0a0b0e; font-weight: 600; letter-spacing: 0.08em; font-size: 10px;">ENG</div>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 15px; flex-grow: 1;">
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="4">
+        <a href="#" style="color: #e8e8ec; opacity: {{n.dim}};">{{n.label}}</a>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nav: ['experience', 'projects', 'writing', 'contact'].map((label) => ({
+        label,
+        dim: label === 'experience' ? '1' : '0.6'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
