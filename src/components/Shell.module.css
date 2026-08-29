@@ -6,6 +6,9 @@
   background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
   background-size: 26px 26px;
   color: var(--text);
+  /* The lens change swaps every token at once. Easing the large surfaces takes
+     the flash out of it; small text snapping is not what the eye notices. */
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 .top {
@@ -87,6 +90,7 @@
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 13px;
   padding-bottom: env(safe-area-inset-bottom);
+  transition: background-color 300ms ease, border-color 300ms ease;
 }
 
 .mode {
@@ -99,6 +103,11 @@
   letter-spacing: 0.11em;
   font-size: 11px;
   flex-shrink: 0;
+  transition: background-color 300ms ease, color 300ms ease, filter 160ms ease;
+}
+
+.mode:hover {
+  filter: brightness(1.08);
 }
 
 .nav {

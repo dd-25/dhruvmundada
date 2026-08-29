@@ -57,7 +57,13 @@ export function Shell({ audience, audiences, activeSection, children }: ShellPro
       <main className={styles.main}>{children}</main>
 
       <nav className={styles.bar} aria-label="Sections">
-        <span className={styles.mode}>{audience.modeLabel}</span>
+        <Link
+          href={audienceHref(audience.id)}
+          className={styles.mode}
+          title={`${audience.label} home`}
+        >
+          {audience.modeLabel}
+        </Link>
 
         <div className={styles.nav}>
           {audience.sections.map((section) => (

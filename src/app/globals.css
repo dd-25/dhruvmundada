@@ -27,14 +27,14 @@ body {
 }
 
 [data-theme="light"] {
-  --ground: #faf8f4;
-  --bar: #ffffff;
-  --dot: #e7e2d8;
-  --text: #131b24;
-  --dim: #4e5b68;
-  --faint: #8a94a0;
-  --border: #e3ded4;
-  --rule: #ece7dd;
+  --ground: #eeeae1;
+  --bar: #f6f3ec;
+  --dot: #dcd6c9;
+  --text: #171f28;
+  --dim: #4d5a66;
+  --faint: #838d98;
+  --border: #d8d2c5;
+  --rule: #e3ddd1;
   --accent: #0d6156;
   --accent-ink: #ffffff;
   --accent-soft: #0a4a41;
@@ -42,6 +42,7 @@ body {
 
 body {
   background: var(--ground);
+  transition: background-color 300ms ease;
   color: var(--text);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
