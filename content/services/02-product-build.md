@@ -2,7 +2,7 @@
 name: Building the product end to end
 blurb: An internal process still living in spreadsheets, turned into software people pay for.
 order: 2
-audiences: ["client"]
+audiences: ["business"]
 points:
   - Multi-tenant backends with data isolation, role-based access and subscription gating.
   - Automated document and invoice generation, safe under concurrent use.

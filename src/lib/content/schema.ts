@@ -18,17 +18,6 @@ const audiences = z.array(z.string().min(1)).default(["*"]);
 export const identitySchema = z.object({
   name: z.string().min(1),
   tagline: z.string().min(1),
-  /** Signature element: measured before/after results, the through-line of the work. */
-  deltas: z
-    .array(
-      z.object({
-        label: z.string().min(1),
-        from: z.string().min(1),
-        to: z.string().min(1),
-      }),
-    )
-    .max(4)
-    .default([]),
   email: z.string().email(),
   phone: z.string().optional(),
   location: z.string().min(1),
@@ -105,6 +94,33 @@ export const serviceSchema = z.object({
   ...ORDERING,
 });
 
+export const learningSchema = z.object({
+  title: z.string().min(1),
+  /** Where it came from — a company, a project, or nothing for a general one. */
+  source: z.string().optional(),
+  kind: z.enum(["work", "general"]).default("general"),
+  date: z.string().regex(/^\d{4}-\d{2}$/, "date must be YYYY-MM"),
+  tags: z.array(z.string().min(1)).default([]),
+  current: z.boolean().default(false),
+  audiences,
+  ...ORDERING,
+});
+
+export const clientSchema = z.object({
+  name: z.string().min(1),
+  /** The product or company the work came through. */
+  via: z.string().min(1),
+  industry: z.string().optional(),
+  since: z.string().optional(),
+  outcome: z.string().min(1),
+  url: z.string().url().optional(),
+  quote: z.string().optional(),
+  quoteBy: z.string().optional(),
+  current: z.boolean().default(false),
+  audiences,
+  ...ORDERING,
+});
+
 export const socialSchema = z.object({
   id: z.enum(["github", "linkedin", "x", "email", "site"]),
   label: z.string().min(1),
@@ -142,4 +158,6 @@ export type Entry<T> = T & {
 export type Experience = Entry<z.infer<typeof experienceSchema>>;
 export type Project = Entry<z.infer<typeof projectSchema>>;
 export type Writing = Entry<z.infer<typeof writingSchema>>;
+export type Learning = Entry<z.infer<typeof learningSchema>>;
+export type Client = Entry<z.infer<typeof clientSchema>>;
 export type Service = Entry<z.infer<typeof serviceSchema>>;

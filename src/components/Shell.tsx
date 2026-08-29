@@ -36,8 +36,8 @@ export function Shell({ audience, audiences, activeSection, children }: ShellPro
           Dhruv Mundada
         </Link>
 
-        <nav className={styles.toggle} aria-label="Choose a view">
-          <span className={styles.toggleLabel}>VIEWING AS</span>
+        <nav className={styles.toggle} aria-label="View this site as">
+          <span className={styles.toggleLabel}>view me as</span>
           <div className={styles.toggleGroup}>
             {audiences.map((option) => (
               <Link
@@ -60,7 +60,7 @@ export function Shell({ audience, audiences, activeSection, children }: ShellPro
         <span className={styles.mode}>{audience.modeLabel}</span>
 
         <div className={styles.nav}>
-          {audience.sections.map((section, index) => (
+          {audience.sections.map((section) => (
             <Link
               key={section}
               href={sectionHref(audience.id, section)}
@@ -68,8 +68,7 @@ export function Shell({ audience, audiences, activeSection, children }: ShellPro
               data-active={section === activeSection}
               aria-current={section === activeSection ? "page" : undefined}
             >
-              <span className={styles.navNum}>{index + 1}</span>
-              <span>{section}</span>
+              {section}
             </Link>
           ))}
         </div>

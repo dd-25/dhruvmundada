@@ -2,7 +2,7 @@
   padding: 44px 36px 40px;
   max-width: 1180px;
   width: 100%;
-  animation: lift 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation: lift 240ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 .head {
@@ -288,4 +288,29 @@
   display: block;
   padding: 28px 0;
   border-bottom: 1px solid var(--rule);
+}
+
+/* Client testimonial */
+.quote {
+  margin: 4px 0 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 70ch;
+}
+
+.quoteText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.quoteBy {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--faint);
 }

@@ -1,0 +1,25 @@
+{
+  "id": "business",
+  "label": "business",
+  "modeLabel": "BUSINESS",
+  "theme": "light",
+  "nameFont": "serif",
+  "primaryAction": {
+    "label": "book a call",
+    "glyph": "→",
+    "href": "mailto:dhruv.mundada04@gmail.com?subject=Project%20enquiry"
+  },
+  "sections": [
+    "services",
+    "projects",
+    "clients",
+    "contact"
+  ],
+  "socials": [
+    "linkedin",
+    "email",
+    "github"
+  ],
+  "order": 2,
+  "default": false
+}

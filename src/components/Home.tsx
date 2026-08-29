@@ -21,18 +21,6 @@ export async function Home({ audience }: { audience: Audience }) {
 
       <p className={styles.tagline}>{audience.tagline ?? identity.tagline}</p>
 
-      {identity.deltas.length > 0 ? (
-        <ul className={styles.deltas}>
-          {identity.deltas.map((delta) => (
-            <li key={delta.label} className={styles.delta}>
-              <span className={styles.deltaLabel}>{delta.label}</span>
-              <span className={styles.deltaFrom}>{delta.from}</span>
-              <span className={styles.deltaArrow}>→</span>
-              <span className={styles.deltaTo}>{delta.to}</span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
 
       <div className={styles.actions}>
         <a className={styles.cta} href={assetPath(action.href)}>

@@ -79,7 +79,7 @@ a {
 @keyframes lift {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;

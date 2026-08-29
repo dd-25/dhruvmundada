@@ -6,19 +6,23 @@ import { z } from "zod";
 import { renderMarkdown } from "./markdown";
 import {
   audienceSchema,
+  clientSchema,
   educationSchema,
   experienceSchema,
   identitySchema,
+  learningSchema,
   projectSchema,
   serviceSchema,
   skillGroupSchema,
   socialSchema,
   writingSchema,
   type Audience,
+  type Client,
   type Education,
   type Entry,
   type Experience,
   type Identity,
+  type Learning,
   type Project,
   type Service,
   type SkillGroup,
@@ -130,6 +134,12 @@ export const getExperience = (): Promise<Experience[]> =>
 
 export const getProjects = (): Promise<Project[]> =>
   once("projects", () => readCollection("projects", projectSchema));
+
+export const getLearnings = (): Promise<Learning[]> =>
+  once("learnings", () => readCollection("learnings", learningSchema));
+
+export const getClients = (): Promise<Client[]> =>
+  once("clients", () => readCollection("clients", clientSchema));
 
 export const getWriting = (): Promise<Writing[]> =>
   once("writing", () => readCollection("writing", writingSchema));

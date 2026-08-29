@@ -6,7 +6,7 @@ kind: INDEPENDENT
 location: India
 url: https://billtrackr.in
 order: 2
-audiences: ["*"]
+audiences: ["engineer"]
 points:
   - Built a B2B SaaS platform replacing Excel and manual billing for civil engineering consultancies — onboarded 3 paying clients running 800+ projects and 150+ invoices/month.
   - Cut bill update and generation from ~55 minutes to under 7.

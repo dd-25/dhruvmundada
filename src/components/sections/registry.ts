@@ -1,5 +1,8 @@
+import ClientsSection from "./ClientsSection";
 import ContactSection from "./ContactSection";
 import ExperienceSection from "./ExperienceSection";
+import LearningsSection from "./LearningsSection";
+import ProjectsSection from "./ProjectsSection";
 import ServicesSection from "./ServicesSection";
 import SkillsSection from "./SkillsSection";
 import WritingSection from "./WritingSection";
@@ -14,7 +17,10 @@ import WritingSection from "./WritingSection";
  */
 export const SECTIONS = {
   experience: ExperienceSection,
+  projects: ProjectsSection,
+  learnings: LearningsSection,
   services: ServicesSection,
+  clients: ClientsSection,
   skills: SkillsSection,
   writing: WritingSection,
   contact: ContactSection,
