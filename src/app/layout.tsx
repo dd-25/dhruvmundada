@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 
-import { getAudiences, getIdentity } from "@/lib/content/loader";
-import { BASE_PATH } from "@/lib/paths";
+import { getAudiences, getIdentity, getSocials } from "@/lib/content/loader";
+import { BASE_PATH, SITE_URL } from "@/lib/paths";
 
 import "./globals.css";
 
@@ -30,13 +30,39 @@ const serif = IBM_Plex_Serif({
 export async function generateMetadata(): Promise<Metadata> {
   const identity = await getIdentity();
   return {
+    // Without this every canonical and og:url resolves relative, which on a
+    // project-path deploy points at the wrong place.
+    metadataBase: new URL(SITE_URL),
     title: { default: identity.name, template: `%s · ${identity.name}` },
     description: identity.tagline,
+    alternates: { canonical: "/" },
     openGraph: {
       title: identity.name,
       description: identity.tagline,
+      url: SITE_URL,
+      siteName: identity.name,
+      locale: "en_IN",
       type: "profile",
     },
+  };
+}
+
+/**
+ * Tells a search engine that this page and those profiles are one person, which
+ * is what lets a name query resolve to this site rather than to a namesake.
+ */
+async function personJsonLd() {
+  const [identity, socials] = await Promise.all([getIdentity(), getSocials()]);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: identity.name,
+    url: SITE_URL,
+    email: identity.email,
+    jobTitle: "Software Engineer",
+    description: identity.tagline,
+    address: { "@type": "PostalAddress", addressLocality: identity.location },
+    sameAs: socials.filter((s) => s.url.startsWith("http")).map((s) => s.url),
   };
 }
 
@@ -69,7 +95,11 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: lensRedirectScript(audienceIds) }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(await personJsonLd()) }}
+        />{children}</body>
     </html>
   );
 }
