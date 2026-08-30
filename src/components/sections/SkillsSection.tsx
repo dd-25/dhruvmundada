@@ -7,7 +7,7 @@ export default async function SkillsSection() {
   const [groups, education] = await Promise.all([getSkills(), getEducation()]);
 
   return (
-    <SectionFrame title="SKILLS" count={`${groups.length} groups`}>
+    <SectionFrame title="SKILLS">
       <div className={styles.list}>
         {groups.map((group) => (
           <div key={group.group} className={styles.row}>

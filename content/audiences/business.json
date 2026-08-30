@@ -4,6 +4,7 @@
   "modeLabel": "BUSINESS",
   "theme": "light",
   "nameFont": "serif",
+  "tagline": "I turn spreadsheet-heavy, follow-up-heavy business workflows into software your team can trust every day.",
   "primaryAction": {
     "label": "book a call",
     "glyph": "→",
@@ -11,8 +12,8 @@
   },
   "sections": [
     "services",
-    "projects",
-    "clients",
+    "products",
+    "customers",
     "contact"
   ],
   "socials": [

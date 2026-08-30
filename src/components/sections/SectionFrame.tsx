@@ -2,16 +2,14 @@ import styles from "./Section.module.css";
 
 type FrameProps = {
   title: string;
-  count?: string;
   children: React.ReactNode;
 };
 
-export function SectionFrame({ title, count, children }: FrameProps) {
+export function SectionFrame({ title, children }: FrameProps) {
   return (
     <section className={styles.frame}>
       <div className={styles.head}>
         <h1 className={styles.title}>{title}</h1>
-        {count ? <span className={styles.count}>{count}</span> : null}
       </div>
       {children}
     </section>
@@ -27,14 +25,20 @@ export function EmptySection({ title, body }: { title: string; body: string }) {
   );
 }
 
+/**
+ * Points arrive as HTML — the loader renders their inline markdown at build
+ * time, so `**45%**` in a content file lands at full contrast against dim body
+ * text. Safe to inject: remark-html sanitises, and the source is the repo.
+ */
 export function Points({ points }: { points: string[] }) {
   return (
     <ul className={styles.points}>
       {points.map((point, index) => (
-        <li key={index} className={styles.point}>
-          <span className={styles.bullet}>—</span>
-          <span className={styles.pointText}>{point}</span>
-        </li>
+        <li
+          key={index}
+          className={styles.point}
+          dangerouslySetInnerHTML={{ __html: point }}
+        />
       ))}
     </ul>
   );

@@ -28,7 +28,7 @@ export default async function ContactSection({ audienceId }: { audienceId: strin
               <span className={styles.strong}>{identity.email}</span>
             </a>
             <p className={styles.pointText}>
-              Fastest way to reach me. I read everything, I reply to anything specific.
+              Fastest way to reach me. Send the context, the problem, or the role, and I will reply directly.
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default async function ContactSection({ audienceId }: { audienceId: strin
             <ul className={styles.points}>
               {shown.map((social) => (
                 <li key={social.id} className={styles.point}>
-                  <span className={styles.bullet}>
+                  <span className={styles.iconSlot}>
                     <SocialIcon id={social.id} size={14} />
                   </span>
                   <a className={styles.link} href={social.url} target="_blank" rel="noreferrer">

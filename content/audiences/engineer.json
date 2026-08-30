@@ -4,6 +4,7 @@
   "modeLabel": "ENGINEER",
   "theme": "dark",
   "nameFont": "mono",
+  "tagline": "Backend and AI engineer with production work across Go services, FastAPI systems, RAG, WhatsApp automation, and performance hardening.",
   "primaryAction": {
     "label": "view résumé",
     "glyph": "→",
@@ -13,6 +14,7 @@
     "experience",
     "learnings",
     "skills",
+    "beyond",
     "contact"
   ],
   "socials": [

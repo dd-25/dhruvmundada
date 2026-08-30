@@ -7,11 +7,11 @@ export default async function ServicesSection({ audienceId }: { audienceId: stri
   const services = forAudience(await getServices(), audienceId);
 
   return (
-    <SectionFrame title="WHAT I DO" count={`${services.length} areas`}>
+    <SectionFrame title="WHAT I DO">
       {services.length === 0 ? (
         <EmptySection
-          title="Nothing here yet."
-          body="Add a markdown file under content/services/ and it appears here on the next build."
+          title="Nothing listed here yet."
+          body="Mail me and I will tell you straight whether it is something I can help with."
         />
       ) : (
         <div className={styles.list}>

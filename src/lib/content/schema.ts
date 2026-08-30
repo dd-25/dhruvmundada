@@ -8,7 +8,6 @@ import { z } from "zod";
 
 const ORDERING = {
   order: z.number().int().default(100),
-  featured: z.boolean().default(false),
   status: z.enum(["draft", "published"]).default("published"),
 };
 
@@ -60,7 +59,7 @@ export const experienceSchema = z.object({
   ...ORDERING,
 });
 
-export const projectSchema = z.object({
+export const productSchema = z.object({
   name: z.string().min(1),
   blurb: z.string().min(1),
   period: z.string().min(1),
@@ -70,17 +69,6 @@ export const projectSchema = z.object({
   current: z.boolean().default(false),
   points: z.array(z.string().min(1)).min(1).max(6),
   stack: z.array(z.string().min(1)).default([]),
-  audiences,
-  ...ORDERING,
-});
-
-export const writingSchema = z.object({
-  title: z.string().min(1),
-  blurb: z.string().min(1),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date must be YYYY-MM-DD"),
-  tags: z.array(z.string().min(1)).default([]),
-  external: z.string().url().optional(),
-  current: z.boolean().default(false),
   audiences,
   ...ORDERING,
 });
@@ -99,19 +87,34 @@ export const learningSchema = z.object({
   /** Where it came from — a company, a project, or nothing for a general one. */
   source: z.string().optional(),
   kind: z.enum(["work", "general"]).default("general"),
-  date: z.string().regex(/^\d{4}-\d{2}$/, "date must be YYYY-MM"),
-  tags: z.array(z.string().min(1)).default([]),
+  /** Rendered as "Jun 2025" by LearningsSection, so the month must be real. */
+  date: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "date must be YYYY-MM"),
+  /** The whole note at a glance. The body below the frontmatter is the long version. */
+  points: z.array(z.string().min(1)).min(1).max(3),
   current: z.boolean().default(false),
   audiences,
   ...ORDERING,
 });
 
-export const clientSchema = z.object({
+/** Anything worth showing that is not a job — teaching, sport, a side channel. */
+export const beyondSchema = z.object({
+  title: z.string().min(1),
+  /** Omit for an ongoing or undated thing — the row then has no meta column. */
+  period: z.string().optional(),
+  url: z.string().url().optional(),
+  points: z.array(z.string().min(1)).min(1).max(3),
+  current: z.boolean().default(false),
+  audiences,
+  ...ORDERING,
+});
+
+export const customerSchema = z.object({
   name: z.string().min(1),
-  /** The product or company the work came through. */
+  /** The product they came through — a client of a service, a buyer of a product. */
   via: z.string().min(1),
   industry: z.string().optional(),
   since: z.string().optional(),
+  /** One line on who they are. This is a client list, not a case study. */
   outcome: z.string().min(1),
   url: z.string().url().optional(),
   quote: z.string().optional(),
@@ -156,8 +159,8 @@ export type Entry<T> = T & {
 };
 
 export type Experience = Entry<z.infer<typeof experienceSchema>>;
-export type Project = Entry<z.infer<typeof projectSchema>>;
-export type Writing = Entry<z.infer<typeof writingSchema>>;
+export type Product = Entry<z.infer<typeof productSchema>>;
 export type Learning = Entry<z.infer<typeof learningSchema>>;
-export type Client = Entry<z.infer<typeof clientSchema>>;
+export type Customer = Entry<z.infer<typeof customerSchema>>;
+export type Beyond = Entry<z.infer<typeof beyondSchema>>;
 export type Service = Entry<z.infer<typeof serviceSchema>>;
