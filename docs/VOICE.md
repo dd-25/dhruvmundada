@@ -248,6 +248,11 @@ know them:
 
 ## Identity and taglines
 
+`identity.name`, `identity.location` and `identity.tagline` render together at the top
+of the home page — name, tagline, then location in quiet mono. Location is there
+because recruiters look for it and it has no other home now that the profile section
+is contact links only.
+
 `identity.tagline` is **his own wording and is not yours to improve.** It comes from
 his GitHub profile and About section, and it is what search engines show. The same
 goes for anything else that states who he is rather than what he did.

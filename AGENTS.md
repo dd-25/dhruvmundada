@@ -81,6 +81,15 @@ is missing, ask rather than inferring intent from the edited output.
   progressive disclosure is native `<details>`. Keep it that way — it is why the
   static export works and why pages render instantly.
 
+## Docs are part of the change
+
+If you alter behaviour, a check, a content rule or a section's shape, update the doc
+that describes it **in the same commit** — `AGENTS.md` for architecture and
+non-obvious files, `docs/CONTENT.md` for fields and mechanics, `docs/VOICE.md` for
+anything about how content reads, `docs/DECISIONS.md` for a choice worth not
+re-litigating. A doc that describes the previous version is worse than no doc,
+because the next person believes it.
+
 ## Checks
 
 ```bash
@@ -88,5 +97,10 @@ npm run build                                   # includes content validation
 npx eslint src --max-warnings=0
 npx tsx src/lib/content/markdown.check.mts      # inline renderer assertions
 ```
+
+`.github/workflows/deploy.yml` runs the same three on every push to `main`, then
+publishes `out/` to Pages — so a failing check is a skipped deploy, not a broken
+site. It caches `.next/cache` between runs; without that every build is cold
+(measured at 19s against 8s warm).
 
 Copy is judged on the rendered page, not in a diff — `npm run dev`, then read it.
