@@ -55,12 +55,12 @@ export default async function ProfileSection({ audienceId }: { audienceId: strin
   return (
     <SectionFrame title="EDUCATION">
       <div className={styles.list}>
-        {education.map((entry, index) => (
+        {education.map((entry) => (
           // No rule between education rows — they read as one group under three
           // labels rather than three unrelated records.
           <div
             key={entry.institution}
-            className={index < education.length - 1 ? `${styles.row} ${styles.rowGroup}` : styles.row}
+            className={`${styles.row} ${styles.rowGroup}`}
           >
             <div className={styles.meta}>
               <span className={styles.period}>{entry.level.toUpperCase()}</span>
@@ -137,7 +137,7 @@ export default async function ProfileSection({ audienceId }: { audienceId: strin
           </Row>
         ) : null}
 
-        <Row label="ELSEWHERE">
+        <Row label="ELSEWHERE" group>
           <ul className={styles.lines}>
             {elsewhere.map((social) => (
               <li key={social.id} className={styles.line}>

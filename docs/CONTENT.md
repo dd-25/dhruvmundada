@@ -29,7 +29,7 @@ content/
   products/*.md        things people can go and use
   customers/*.md       who used them (names need permission)
   skills.json
-  education.json      shown under PROFILE
+  education.json      shown under PROFILE — `level` is the left-column key
   achievements.json   shown under PROFILE, empty until there is something
   socials.json
 ```

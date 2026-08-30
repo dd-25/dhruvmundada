@@ -166,14 +166,32 @@ The last section on both lenses, and it doubles as contact — there is no separ
 contact section. Education first, then achievements when `achievements.json` has any,
 then how to reach him.
 
+The page carries **two headings, `EDUCATION` and `CONTACT`**, not one called PROFILE.
+Each keeps the rule under its heading — that rule opens a block. Every row inside is
+`rowGroup`, so neither block closes with a trailing rule; the next heading is what
+ends it. A rule under a heading is structure, a rule after the last row is a leftover.
+
 **Every row is a key on the left and a value on the right**, using the same
-`meta` / `body` grid as experience — `EMAIL`, `WHATSAPP`, `ELSEWHERE`, `BASED`, and
-`EDUCATION` beside its period. Do not collapse these into a bulleted list. The label
-column is what makes the section scannable, and it is the layout used everywhere else
-on the site.
+`meta` / `body` grid as experience. Do not collapse these into a bulleted list; the
+label column is what makes the section scannable and it is the layout used everywhere
+else on the site.
+
+The key is the thing being labelled and goes on top — the qualification level
+(`B.TECH`, `12TH`, `10TH`) above its dates, so the label aligns with the line it names
+rather than with the mark below it. Contact keys are `EMAIL`, `WHATSAPP`, `ELSEWHERE`.
+
+Contact lines run one size above body text and carry the accent, because they exist to
+be clicked and the denser education block beside them makes 15px links read as an
+afterthought. Every line gets an icon so the glyph column is straight. Social labels
+are the full URL, not the network's name, so the address survives a dead link.
 
 Education values use `strongInline`, not `heading`. Three qualifications stacked at
-heading size read as three jobs rather than three schools.
+heading size read as three jobs rather than three schools. A mark sits on its own line
+in mono under the qualification, tightened with `bodyTight` because it belongs to the
+line above rather than being a second entry.
+
+**A `<p>` inside `.body` needs `margin: 0`.** The flex gap and the default paragraph
+margin stack, so spacing that looks wrong is usually the margin, not the gap.
 
 Email is filtered out of the social list because it has its own line — `socials.json`
 carries an `email` entry whose label is the address, and rendering both printed it
