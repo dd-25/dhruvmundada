@@ -13,6 +13,10 @@
   border-bottom: 1px solid var(--border);
 }
 
+.headGroup {
+  margin-top: 34px;
+}
+
 .title {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 12px;
@@ -180,7 +184,94 @@
   display: none;
 }
 
+/* Contact lines. Same left rhythm as .point so icon-bearing and icon-less lines
+   align, but no marker — a dash in front of a phone number reads as a hyphen. */
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.line {
+  position: relative;
+  padding-left: 26px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--dim);
+}
+
+/* A note under a contact line. Quiet and indented to the line's text edge, so it
+   reads as a caption rather than a second entry in the list. */
+.hint {
+  margin: 0;
+  padding-left: 26px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--faint);
+}
+
+/* A contact line is there to be clicked, so it sits a step above body text and
+   carries the accent. Education beside it is denser, which made 15px links read as
+   an afterthought. */
+.line .link {
+  font-family: inherit;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.lines .iconSlot {
+  top: 0.3em;
+}
+
+/* Consecutive rows that belong together — the education block. Dropping the rule and
+   the bottom padding closes the gap so three rows read as one group. */
+.rowGroup {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Second and later rows of a group sit close to the one above. Only rows that follow
+   a grouped row match, so the row after the group keeps the normal rhythm. */
+.rowGroup + .row {
+  padding-top: 12px;
+}
+
+/* A figure belongs to the line above it, so it sits closer than the section's normal
+   13px rhythm would put it. */
+.bodyTight {
+  gap: 4px;
+}
+
+/* A mark, a grade, a score — its own line under the qualification. Set in mono
+   because it is a figure, and appending it after a separator buried it. */
+.figure {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--dim);
+  margin: 0;
+}
+
+/* Leading date inside a grouped line, for entries with no meta column of their own. */
+.when {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--faint);
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+/* A qualification is the subject of its line, so it carries weight without jumping
+   to heading size — three of them stacked at 17px read as three jobs. */
+.strongInline {
+  color: var(--text);
+  font-weight: 500;
+}
+
 .pointText {
+  margin: 0;
   font-size: 15px;
   line-height: 1.62;
   color: var(--dim);

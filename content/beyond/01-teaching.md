@@ -5,9 +5,9 @@ url: https://www.youtube.com/@dd_25kt
 order: 1
 audiences: ["*"]
 points:
-  - Taught Class 11 mathematics to **47 students** — polynomials, quadratic equations, trigonometry, linear equations, and the opening of coordinate geometry.
-  - Took one-to-one CA Foundation mathematics sessions online across **late 2024**, in the third year of college.
-  - Recorded public lectures alongside the classroom work, mostly to make the explanation survive beyond the room.
+  - Taught Class 11 mathematics to **47 students** at Vibrant Academy, Chhatrapati Sambhajinagar — polynomials, quadratic equations, trigonometry, linear equations, and the opening of coordinate geometry.
+  - Took one-to-one CA Foundation mathematics sessions online during the third year of college.
+  - Run a YouTube channel teaching mathematics.
 ---
 
 Forty-seven people, none of whom nod along forever to an explanation that has

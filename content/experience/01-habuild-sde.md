@@ -9,11 +9,11 @@ current: true
 order: 1
 audiences: ["*"]
 points:
-  - Built and owned a Go sessions service end to end, now the company-wide source of truth adopted by the mobile, agents and admin teams — consolidated a system that lived somewhere different for every session type, and held MongoDB and Qdrant consistent on every write under a latency budget that ruled out queues.
-  - Led the RCA and hardening of a FastAPI engagement service carrying **~18M requests/week** — pooled and timeout-bounded every httpx, asyncpg and Redis client, and closed two connection leaks. **p95 down 45%** (209ms to 115ms), CPU **55%**, peak memory **71%**.
-  - Built the knowledge layer behind the agents service — metadata-filtered retrieval over Qdrant, reranking over narrowed candidates, and duplicate detection before write.
-  - Shipped screenshot-based payment verification for a production AI assistant using GPT-4.1 vision, matching UTR, payer number and amount behind fail-closed gates — **1,520 interactions in the first 15 hours**, **312 auto-confirmed**, with unclear cases routed to humans.
-  - Rebuilt the QC team's admin tooling — repaired the chat tester, added CSV export and find-and-replace across intents, and cut a slow filters path on a partitioned table from **15–17s to under 200ms**.
+  - Building and owning a **Go** sessions service end to end, now the company-wide source of truth adopted by the mobile, agents and admin teams — consolidates a system that lived somewhere different for every session type, and holds **MongoDB and Qdrant consistent on every write** under a latency budget that rules out queues.
+  - Led the RCA and hardening of a FastAPI engagement service carrying **~18M requests/week** — introduced **HTTP and database connection pooling**, bounded every timeout, and closed two connection leaks. **p95 down 45%** (209ms to 115ms), CPU down 55%, peak memory down 71%.
+  - Built the knowledge layer behind the agents service — **metadata-filtered retrieval** over Qdrant, **reranking** over the narrowed candidates, and duplicate detection before write.
+  - Shipped screenshot-based payment verification for a production AI assistant using GPT-4.1 vision, matching UTR, payer number and amount behind fail-closed gates — **1,520 interactions in the first 15 hours**, **312 auto-confirmed**, with unclear cases escalated to a human.
+  - Rebuilt the QC team's admin tooling so changes could be tested before production — repaired the chat tester, added CSV export and find-and-replace across intents, and cut a slow filters path on a **partitioned table** from **15–17 seconds to under 200ms**.
 stack: [Go, Python, FastAPI, MongoDB, PostgreSQL, Qdrant, LangGraph, AWS Lambda]
 ---
 

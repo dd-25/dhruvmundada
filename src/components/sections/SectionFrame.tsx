@@ -16,6 +16,15 @@ export function SectionFrame({ title, children }: FrameProps) {
   );
 }
 
+/** A second heading inside a section, for a page that carries two distinct blocks. */
+export function GroupHead({ title }: { title: string }) {
+  return (
+    <div className={`${styles.head} ${styles.headGroup}`}>
+      <h2 className={styles.title}>{title}</h2>
+    </div>
+  );
+}
+
 export function EmptySection({ title, body }: { title: string; body: string }) {
   return (
     <div className={styles.empty}>

@@ -1,6 +1,6 @@
 import BeyondSection from "./BeyondSection";
 import CustomersSection from "./CustomersSection";
-import ContactSection from "./ContactSection";
+import ProfileSection from "./ProfileSection";
 import ExperienceSection from "./ExperienceSection";
 import LearningsSection from "./LearningsSection";
 import ProductsSection from "./ProductsSection";
@@ -23,7 +23,7 @@ export const SECTIONS = {
   customers: CustomersSection,
   skills: SkillsSection,
   beyond: BeyondSection,
-  contact: ContactSection,
+  profile: ProfileSection,
 } as const;
 
 export type SectionId = keyof typeof SECTIONS;

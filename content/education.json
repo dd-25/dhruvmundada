@@ -1,9 +1,26 @@
 [
   {
+    "level": "B.Tech",
+    "qualification": "Computer Science and Engineering",
     "institution": "Indian Institute of Information Technology, Nagpur",
-    "qualification": "B.Tech, Computer Science and Engineering",
     "period": "Nov 2022 — May 2026",
     "note": "CGPA 9.44 / 10",
     "order": 1
+  },
+  {
+    "level": "12th",
+    "qualification": "Science, Maharashtra Board",
+    "institution": "Vidyadham Science Junior College, Chhatrapati Sambhajinagar",
+    "period": "2021 — 2022",
+    "note": "89.33%",
+    "order": 2
+  },
+  {
+    "level": "10th",
+    "qualification": "CBSE",
+    "institution": "Podar International School, Chhatrapati Sambhajinagar",
+    "period": "2019 — 2020",
+    "note": "95.6%",
+    "order": 3
   }
 ]

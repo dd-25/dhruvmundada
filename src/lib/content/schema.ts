@@ -137,7 +137,18 @@ export const skillGroupSchema = z.object({
   order: z.number().int().default(100),
 });
 
+/** Anything worth listing under the profile that is not a role — a hackathon, a rank. */
+export const achievementSchema = z.object({
+  title: z.string().min(1),
+  note: z.string().optional(),
+  year: z.string().optional(),
+  url: z.string().url().optional(),
+  order: z.number().int().default(100),
+});
+
 export const educationSchema = z.object({
+  /** The left-column label — "B.Tech", "12th", "10th". */
+  level: z.string().min(1),
   institution: z.string().min(1),
   qualification: z.string().min(1),
   period: z.string().min(1),
@@ -150,6 +161,7 @@ export type Audience = z.infer<typeof audienceSchema>;
 export type Social = z.infer<typeof socialSchema>;
 export type SkillGroup = z.infer<typeof skillGroupSchema>;
 export type Education = z.infer<typeof educationSchema>;
+export type Achievement = z.infer<typeof achievementSchema>;
 
 /** A markdown record: validated frontmatter plus the optional body below it. */
 export type Entry<T> = T & {

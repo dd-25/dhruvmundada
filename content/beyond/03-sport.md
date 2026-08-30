@@ -4,8 +4,8 @@ period: 2015 — 2020
 order: 3
 audiences: ["*"]
 points:
-  - Won **gold in kumite**, the sparring event, at an international karate camp in Mumbai, and became a **state medallist** in karate and kickboxing.
-  - Earned a **black belt** in karate across **five years** of training, alongside boxing during school.
+  - Hold a **black belt** in karate, trained across **five years** alongside boxing and kickboxing.
+  - Am a **state-level medallist** in both karate and kickboxing, and won **gold in a fight event** at an international karate camp in Mumbai.
   - "Played for the school cricket team and competed in athletics: sprint, long jump and relay."
 ---
 

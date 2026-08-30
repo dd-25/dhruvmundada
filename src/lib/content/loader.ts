@@ -5,6 +5,7 @@ import { z } from "zod";
 
 import { renderInline, renderMarkdown } from "./markdown";
 import {
+  achievementSchema,
   audienceSchema,
   beyondSchema,
   customerSchema,
@@ -16,6 +17,7 @@ import {
   serviceSchema,
   skillGroupSchema,
   socialSchema,
+  type Achievement,
   type Audience,
   type Beyond,
   type Customer,
@@ -143,6 +145,11 @@ export const getSocials = (): Promise<Social[]> =>
 
 export const getSkills = (): Promise<SkillGroup[]> =>
   once("skills", async () => byOrder(await readJson("skills.json", z.array(skillGroupSchema))));
+
+export const getAchievements = (): Promise<Achievement[]> =>
+  once("achievements", async () =>
+    byOrder(await readJson("achievements.json", z.array(achievementSchema))),
+  );
 
 export const getEducation = (): Promise<Education[]> =>
   once("education", async () =>

@@ -7,5 +7,5 @@ points:
   - Requirements taken by watching the work happen, not only reading a brief.
   - Backend, database and interface designed so a second customer does not mean a second copy.
   - Accounts, permissions, billing tiers, document generation, invoice flows and exports people actually use.
-  - Deployment and handover included, so the product keeps running after the first release.
+  - Deployed and handed over working, with the setup documented rather than described.
 ---

@@ -4,17 +4,17 @@
   "modeLabel": "BUSINESS",
   "theme": "light",
   "nameFont": "serif",
-  "tagline": "I turn spreadsheet-heavy, follow-up-heavy business workflows into software your team can trust every day.",
+  "tagline": "I build the software a business runs on, and make what it already runs on faster and more reliable.",
   "primaryAction": {
     "label": "book a call",
     "glyph": "→",
-    "href": "mailto:dhruv.mundada04@gmail.com?subject=Project%20enquiry"
+    "href": "https://wa.me/919850251104"
   },
   "sections": [
     "services",
     "products",
     "customers",
-    "contact"
+    "profile"
   ],
   "socials": [
     "linkedin",
