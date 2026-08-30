@@ -68,9 +68,15 @@ is missing, ask rather than inferring intent from the edited output.
 - **`basePath` is `/dhruvmundada`.** Raw `href`/`src` outside `next/link` and
   `next/image` must go through `assetPath()` in `src/lib/paths.ts`.
 - **`public/.nojekyll` is load-bearing.** Without it GitHub Pages drops `_next/`.
-- **`src/app/icon.svg` is the site icon.** App Router picks it up by filename and
-  emits the `<link rel="icon">`; there is no `favicon.ico` and adding one back would
-  take precedence over it.
+- **Tab icons are per lens**, one static SVG each in `public/icons/`, declared
+  through `lensIcon()` in every route's `generateMetadata`. The URL must stay
+  identical across a lens's pages — a changed href makes the browser drop the icon
+  and refetch, which is what a flickering favicon is. `/` uses the default lens's
+  icon for the same reason. There is deliberately no `app/icon.svg` or
+  `favicon.ico`; either would take precedence and reintroduce the mismatch.
+- **Every tab reads just the name.** `layout.tsx` sets an absolute title and no page
+  overrides it. Unique per-page titles would be marginally better for search — this
+  is a deliberate trade, not an oversight.
 - **No client-side state for navigation.** The lens toggle is a pair of links and
   progressive disclosure is native `<details>`. Keep it that way — it is why the
   static export works and why pages render instantly.
