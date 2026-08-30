@@ -16,6 +16,7 @@
 # next.js
 /.next/
 /out/
+/.turbo/
 
 # production
 /build
@@ -45,3 +46,7 @@ scratchpad/
 
 # local npm cache
 .npm-cache/
+
+# published design-canvas pages — megabytes of vendored editor runtime,
+# regenerable from the .dc.html artboards and canvas.json beside them
+design/*-portfolio.html

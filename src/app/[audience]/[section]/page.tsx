@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { SECTIONS, isSectionId } from "@/components/sections/registry";
 import { Shell } from "@/components/Shell";
+import { lensIcon } from "@/lib/paths";
 import { getAudienceById, getAudiences } from "@/lib/content/loader";
 
 type Params = { params: Promise<{ audience: string; section: string }> };
@@ -30,7 +31,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const audience = await getAudienceById(audienceId);
   if (!audience) return {};
 
-  return { title: `${section} · for ${audience.label}s` };
+  return {
+    title: `${section} · for ${audience.label}s`,
+    icons: { icon: lensIcon(audience.id) },
+  };
 }
 
 export default async function SectionPage({ params }: Params) {

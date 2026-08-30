@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Home } from "@/components/Home";
 import { Shell } from "@/components/Shell";
 import { getAudienceById, getAudiences, getIdentity } from "@/lib/content/loader";
+import { lensIcon } from "@/lib/paths";
 
 type Params = { params: Promise<{ audience: string }> };
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description,
     // The default lens is also served at "/". Point search engines at the short URL.
     alternates: audience.default ? { canonical: "/" } : undefined,
+    icons: { icon: lensIcon(audience.id) },
   };
 }
 

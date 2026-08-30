@@ -3,6 +3,11 @@ export const BASE_PATH = process.env.BASE_PATH ?? "";
 /** Absolute origin + basePath. Used by robots.txt, the sitemap and OG tags. */
 export const SITE_URL = `https://dd-25.github.io${BASE_PATH}`;
 
+/** Per-lens tab icon. One static file each, so nothing is generated at runtime. */
+export function lensIcon(audienceId: string): string {
+  return assetPath(`/icons/${audienceId}.svg`);
+}
+
 /**
  * Prefixes basePath onto a raw href. Only needed for paths Next does not
  * rewrite itself — files in public/ referenced outside next/image, and any
