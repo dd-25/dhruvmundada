@@ -139,6 +139,8 @@ export const skillGroupSchema = z.object({
 
 /** Anything worth listing under the profile that is not a role — a hackathon, a rank. */
 export const achievementSchema = z.object({
+  /** The left-column key, same role as education's `level`. */
+  label: z.string().min(1),
   title: z.string().min(1),
   note: z.string().optional(),
   year: z.string().optional(),

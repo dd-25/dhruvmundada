@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 import { PhoneIcon, SocialIcon } from "@/components/Icons";
 import {
   getAchievements,
@@ -76,25 +74,26 @@ export default async function ProfileSection({ audienceId }: { audienceId: strin
           </div>
         ))}
 
-        {achievements.length > 0 ? (
-          <Row label="ACHIEVEMENTS">
-            {achievements.map((item) => (
-              <Fragment key={item.title}>
-                <p className={styles.pointText}>
-                  {item.year ? <span className={styles.when}>{item.year}</span> : null}
-                  {item.url ? (
-                    <a className={styles.link} href={item.url} target="_blank" rel="noreferrer">
-                      {item.title} ↗
-                    </a>
-                  ) : (
-                    <span className={styles.strongInline}>{item.title}</span>
-                  )}
-                </p>
-                {item.note ? <p className={styles.figure}>{item.note}</p> : null}
-              </Fragment>
-            ))}
-          </Row>
-        ) : null}
+        {achievements.map((item) => (
+          <div key={item.title} className={`${styles.row} ${styles.rowGroup}`}>
+            <div className={styles.meta}>
+              <span className={styles.period}>{item.label.toUpperCase()}</span>
+              {item.year ? <span className={styles.kind}>{item.year}</span> : null}
+            </div>
+            <div className={`${styles.body} ${styles.bodyTight}`}>
+              <p className={styles.pointText}>
+                {item.url ? (
+                  <a className={styles.link} href={item.url} target="_blank" rel="noreferrer">
+                    {item.title} ↗
+                  </a>
+                ) : (
+                  <span className={styles.strongInline}>{item.title}</span>
+                )}
+              </p>
+              {item.note ? <p className={styles.figure}>{item.note}</p> : null}
+            </div>
+          </div>
+        ))}
 
       </div>
 

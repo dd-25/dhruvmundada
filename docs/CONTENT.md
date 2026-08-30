@@ -112,17 +112,28 @@ credential rather than a job or a hobby. Renders under PROFILE, above contact.
 ```json
 [
   {
-    "title": "Specialist on Codeforces",
+    "label": "Codeforces",
+    "title": "Specialist",
     "note": "peak rating 1400",
     "url": "https://codeforces.com/profile/<handle>",
     "order": 1
   },
-  { "title": "Winner, <hackathon name>", "note": "out of 120 teams", "year": "2025", "order": 2 }
+  {
+    "label": "Hackathon",
+    "title": "Winner, <hackathon name>",
+    "note": "out of 120 teams",
+    "year": "2025",
+    "order": 2
+  }
 ]
 ```
 
-`title` is required; `note`, `year` and `url` are optional. The block does not render
-while the file is an empty array, so there is never an empty heading.
+`label` and `title` are required; `note`, `year` and `url` are optional. `label` is the
+left-column key, the same role `level` plays for education — the rows continue the
+EDUCATION block rather than opening a section of their own, because a credential and a
+qualification are the same kind of thing to a reader.
+
+An empty array renders nothing, so there is never a heading with nothing under it.
 
 Rule of thumb for where something goes: a **credential** (rating, rank, prize) is an
 achievement; a **sustained activity** (sport, teaching, a club) is `beyond/`; a **job**
