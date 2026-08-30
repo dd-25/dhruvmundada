@@ -30,7 +30,7 @@ jobs:
 
       # Next's compiler cache. Without it every run is a cold build; restoring it
       # takes the compile step from ~9s to under 1s.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: .next/cache
           key: next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'content/**') }}
