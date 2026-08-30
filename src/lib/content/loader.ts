@@ -3,31 +3,31 @@ import path from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
 
-import { renderMarkdown } from "./markdown";
+import { renderInline, renderMarkdown } from "./markdown";
 import {
   audienceSchema,
-  clientSchema,
+  beyondSchema,
+  customerSchema,
   educationSchema,
   experienceSchema,
   identitySchema,
   learningSchema,
-  projectSchema,
+  productSchema,
   serviceSchema,
   skillGroupSchema,
   socialSchema,
-  writingSchema,
   type Audience,
-  type Client,
+  type Beyond,
+  type Customer,
   type Education,
   type Entry,
   type Experience,
   type Identity,
   type Learning,
-  type Project,
+  type Product,
   type Service,
   type SkillGroup,
   type Social,
-  type Writing,
 } from "./schema";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -57,6 +57,10 @@ async function readJson<T>(relPath: string, schema: z.ZodType<T>): Promise<T> {
   return parseOrThrow(schema, data, relPath);
 }
 
+function hasPoints(value: object): value is { points: string[] } {
+  return Array.isArray((value as { points?: unknown }).points);
+}
+
 /** Reads every .md in a directory, validating frontmatter and rendering the body. */
 async function readCollection<T extends { order: number; current: boolean }>(
   dir: string,
@@ -67,7 +71,7 @@ async function readCollection<T extends { order: number; current: boolean }>(
     files = (await readdir(path.join(CONTENT_DIR, dir))).filter((f) => f.endsWith(".md"));
   } catch (cause) {
     // A missing directory means "nothing written yet" — git does not track empty
-    // dirs, so content/writing and content/clients legitimately vanish on checkout.
+    // dirs, so a collection with nothing written yet legitimately vanishes on checkout.
     // Anything else (permissions, a bad mount) must fail the build, not quietly
     // render an empty section.
     if ((cause as NodeJS.ErrnoException).code !== "ENOENT") throw cause;
@@ -79,8 +83,19 @@ async function readCollection<T extends { order: number; current: boolean }>(
       const relPath = `${dir}/${file}`;
       const raw = await readFile(path.join(CONTENT_DIR, dir, file), "utf8");
       const { data, content } = matter(raw);
+      const parsed = parseOrThrow(schema, data, relPath);
+
+      // Points carry inline markdown so a file can mark its own emphasis.
+      // Guarded rather than folded into the schemas because only some
+      // collections have points, and the ones that don't must stay untouched.
+      if (hasPoints(parsed)) {
+        parsed.points = await Promise.all(
+          parsed.points.map((point) => renderInline(point)),
+        );
+      }
+
       return {
-        ...parseOrThrow(schema, data, relPath),
+        ...parsed,
         slug: file.replace(/\.md$/, ""),
         detail: await renderMarkdown(content),
       };
@@ -137,17 +152,17 @@ export const getEducation = (): Promise<Education[]> =>
 export const getExperience = (): Promise<Experience[]> =>
   once("experience", () => readCollection("experience", experienceSchema));
 
-export const getProjects = (): Promise<Project[]> =>
-  once("projects", () => readCollection("projects", projectSchema));
+export const getProducts = (): Promise<Product[]> =>
+  once("products", () => readCollection("products", productSchema));
 
 export const getLearnings = (): Promise<Learning[]> =>
   once("learnings", () => readCollection("learnings", learningSchema));
 
-export const getClients = (): Promise<Client[]> =>
-  once("clients", () => readCollection("clients", clientSchema));
+export const getBeyond = (): Promise<Beyond[]> =>
+  once("beyond", () => readCollection("beyond", beyondSchema));
 
-export const getWriting = (): Promise<Writing[]> =>
-  once("writing", () => readCollection("writing", writingSchema));
+export const getCustomers = (): Promise<Customer[]> =>
+  once("customers", () => readCollection("customers", customerSchema));
 
 export const getServices = (): Promise<Service[]> =>
   once("services", () => readCollection("services", serviceSchema));

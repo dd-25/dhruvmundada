@@ -4,16 +4,17 @@
   "modeLabel": "BUSINESS",
   "theme": "light",
   "nameFont": "serif",
+  "tagline": "I build the software a business runs on, and make what it already runs on faster and more reliable.",
   "primaryAction": {
     "label": "book a call",
     "glyph": "→",
-    "href": "mailto:dhruv.mundada04@gmail.com?subject=Project%20enquiry"
+    "href": "https://wa.me/919850251104"
   },
   "sections": [
     "services",
-    "projects",
-    "clients",
-    "contact"
+    "products",
+    "customers",
+    "profile"
   ],
   "socials": [
     "linkedin",

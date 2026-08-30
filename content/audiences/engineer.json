@@ -4,6 +4,7 @@
   "modeLabel": "ENGINEER",
   "theme": "dark",
   "nameFont": "mono",
+  "tagline": "Backend and AI engineer. I make systems faster, cheaper, and harder to get wrong.",
   "primaryAction": {
     "label": "view résumé",
     "glyph": "→",
@@ -13,7 +14,8 @@
     "experience",
     "learnings",
     "skills",
-    "contact"
+    "beyond",
+    "profile"
   ],
   "socials": [
     "github",

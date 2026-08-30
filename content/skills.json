@@ -1,8 +1,8 @@
 [
   { "group": "Languages", "items": ["C/C++", "Go", "Python", "TypeScript", "JavaScript", "Java", "SQL"], "order": 1 },
-  { "group": "Backend", "items": ["Node.js", "NestJS", "Express", "FastAPI", "Prisma", "Jest"], "order": 2 },
+  { "group": "Backend", "items": ["Node.js", "NestJS", "Express", "FastAPI", "Spring Boot", "Prisma", "Jest", "Locust"], "order": 2 },
   { "group": "AI / LLM", "items": ["LangGraph", "LangChain", "RAG", "Langfuse"], "order": 3 },
   { "group": "Data", "items": ["PostgreSQL", "MongoDB", "Redis", "Qdrant", "Firebase"], "order": 4 },
-  { "group": "Cloud & DevOps", "items": ["AWS ECS", "SQS", "EventBridge", "Lambda", "S3", "CloudMap", "GCP BigQuery", "Docker", "Git"], "order": 5 },
+  { "group": "Cloud & DevOps", "items": ["AWS ECS", "SQS", "EventBridge", "Lambda", "S3", "CloudMap", "GCP BigQuery", "Docker", "Git", "GitHub Actions", "Maven"], "order": 5 },
   { "group": "Frontend", "items": ["React.js", "Next.js"], "order": 6 }
 ]

@@ -7,11 +7,11 @@ export default async function ExperienceSection({ audienceId }: { audienceId: st
   const roles = forAudience(await getExperience(), audienceId);
 
   return (
-    <SectionFrame title="EXPERIENCE" count={`${roles.length} entries`}>
+    <SectionFrame title="EXPERIENCE">
       {roles.length === 0 ? (
         <EmptySection
           title="Nothing here yet."
-          body="Add a markdown file under content/experience/ and it appears here on the next build."
+          body="Roles appear here as they start."
         />
       ) : (
         <div className={styles.list}>

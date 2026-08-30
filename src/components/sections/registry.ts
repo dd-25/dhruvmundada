@@ -1,11 +1,11 @@
-import ClientsSection from "./ClientsSection";
-import ContactSection from "./ContactSection";
+import BeyondSection from "./BeyondSection";
+import CustomersSection from "./CustomersSection";
+import ProfileSection from "./ProfileSection";
 import ExperienceSection from "./ExperienceSection";
 import LearningsSection from "./LearningsSection";
-import ProjectsSection from "./ProjectsSection";
+import ProductsSection from "./ProductsSection";
 import ServicesSection from "./ServicesSection";
 import SkillsSection from "./SkillsSection";
-import WritingSection from "./WritingSection";
 
 /**
  * Section id -> component. A `sections` entry in an audience file that is not a
@@ -17,13 +17,13 @@ import WritingSection from "./WritingSection";
  */
 export const SECTIONS = {
   experience: ExperienceSection,
-  projects: ProjectsSection,
+  products: ProductsSection,
   learnings: LearningsSection,
   services: ServicesSection,
-  clients: ClientsSection,
+  customers: CustomersSection,
   skills: SkillsSection,
-  writing: WritingSection,
-  contact: ContactSection,
+  beyond: BeyondSection,
+  profile: ProfileSection,
 } as const;
 
 export type SectionId = keyof typeof SECTIONS;

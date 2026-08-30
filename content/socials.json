@@ -1,5 +1,5 @@
 [
   { "id": "github", "label": "github.com/dd-25", "url": "https://github.com/dd-25", "order": 1 },
-  { "id": "linkedin", "label": "linkedin", "url": "https://www.linkedin.com/in/dhruv-mundada-7b1a42259", "order": 2 },
+  { "id": "linkedin", "label": "linkedin.com/in/dhruv-mundada-7b1a42259", "url": "https://www.linkedin.com/in/dhruv-mundada-7b1a42259", "order": 2 },
   { "id": "email", "label": "dhruv.mundada04@gmail.com", "url": "mailto:dhruv.mundada04@gmail.com", "order": 3 }
 ]

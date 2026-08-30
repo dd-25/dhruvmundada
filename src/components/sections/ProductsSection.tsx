@@ -1,59 +1,58 @@
-import { forAudience, getProjects } from "@/lib/content/loader";
+import { forAudience, getProducts } from "@/lib/content/loader";
 
 import { Chips, Points, SectionFrame, EmptySection } from "./SectionFrame";
 import styles from "./Section.module.css";
 
-export default async function ProjectsSection({ audienceId }: { audienceId: string }) {
-  const projects = forAudience(await getProjects(), audienceId);
+export default async function ProductsSection({ audienceId }: { audienceId: string }) {
+  const products = forAudience(await getProducts(), audienceId);
 
   return (
     <SectionFrame
-      title="PROJECTS"
-      count={projects.length ? `${projects.length} built` : undefined}
+      title="PRODUCTS"
     >
-      {projects.length === 0 ? (
+      {products.length === 0 ? (
         <EmptySection
           title="Nothing here yet."
-          body="Add a markdown file under content/projects/ and it appears here on the next build."
+          body="Products appear here as they ship."
         />
       ) : (
         <div className={styles.list}>
-          {projects.map((project) => (
-            <article key={project.slug} className={styles.row}>
+          {products.map((product) => (
+            <article key={product.slug} className={styles.row}>
               <div className={styles.meta}>
-                <span className={styles.period} data-current={project.current}>
-                  {project.period}
+                <span className={styles.period} data-current={product.current}>
+                  {product.period}
                 </span>
-                <span className={styles.kind}>{project.role.toUpperCase()}</span>
+                <span className={styles.kind}>{product.role.toUpperCase()}</span>
               </div>
 
               <div className={styles.body}>
                 <h2 className={styles.heading}>
-                  {project.current ? <span className={styles.dot} role="img" aria-label="current" /> : null}
-                  {project.url ? (
+                  {product.current ? <span className={styles.dot} role="img" aria-label="current" /> : null}
+                  {product.url ? (
                     <a
                       className={styles.strong}
-                      href={project.url}
+                      href={product.url}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {project.name} ↗
+                      {product.name} ↗
                     </a>
                   ) : (
-                    <span className={styles.strong}>{project.name}</span>
+                    <span className={styles.strong}>{product.name}</span>
                   )}
                 </h2>
 
-                <p className={styles.pointText}>{project.blurb}</p>
+                <p className={styles.pointText}>{product.blurb}</p>
 
-                <Points points={project.points} />
+                <Points points={product.points} />
 
                 <div className={styles.footer}>
-                  <Chips items={project.stack} />
-                  {project.repo ? (
+                  <Chips items={product.stack} />
+                  {product.repo ? (
                     <a
                       className={styles.link}
-                      href={project.repo}
+                      href={product.repo}
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -62,12 +61,12 @@ export default async function ProjectsSection({ audienceId }: { audienceId: stri
                   ) : null}
                 </div>
 
-                {project.detail ? (
+                {product.detail ? (
                   <details className={styles.disclosure}>
                     <summary className={styles.summary}>read more</summary>
                     <div
                       className={styles.detail}
-                      dangerouslySetInnerHTML={{ __html: project.detail }}
+                      dangerouslySetInnerHTML={{ __html: product.detail }}
                     />
                   </details>
                 ) : (

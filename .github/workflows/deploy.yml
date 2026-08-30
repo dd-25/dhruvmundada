@@ -28,7 +28,20 @@ jobs:
 
       - run: npm ci
 
+      # Next's compiler cache. Without it every run is a cold build; restoring it
+      # takes the compile step from ~9s to under 1s.
+      - uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'content/**') }}
+          restore-keys: |
+            next-${{ hashFiles('package-lock.json') }}-
+            next-
+
       - run: npx eslint src --max-warnings=0
+
+      # Asserts the inline markdown renderer, which points and blurbs go through.
+      - run: npx tsx src/lib/content/markdown.check.mts
 
       # Content is validated here. A malformed file in content/ fails this step,
       # the deploy never runs, and the live site stays on the last good build.

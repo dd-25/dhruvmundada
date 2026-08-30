@@ -1,6 +1,6 @@
 import { forAudience, getLearnings } from "@/lib/content/loader";
 
-import { Chips, SectionFrame, EmptySection } from "./SectionFrame";
+import { Points, SectionFrame, EmptySection } from "./SectionFrame";
 import styles from "./Section.module.css";
 
 const KIND_LABEL = {
@@ -8,18 +8,26 @@ const KIND_LABEL = {
   general: "ELSEWHERE",
 } as const;
 
+const MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+] as const;
+
+/** "2025-08" -> "Aug 2025". The schema guarantees a real month, so no guard here. */
+function monthYear(date: string): string {
+  const [year, month] = date.split("-");
+  return `${MONTHS[Number(month) - 1]} ${year}`;
+}
+
 export default async function LearningsSection({ audienceId }: { audienceId: string }) {
   const learnings = forAudience(await getLearnings(), audienceId);
 
   return (
-    <SectionFrame
-      title="LEARNINGS"
-      count={learnings.length ? `${learnings.length} notes` : undefined}
-    >
+    <SectionFrame title="LEARNINGS">
       {learnings.length === 0 ? (
         <EmptySection
           title="Nothing written down yet."
-          body="Short notes on what production actually taught me, and what I picked up outside work. Add a file under content/learnings/ and it lands here."
+          body="Short notes on what production actually taught me, and what I picked up outside work."
         />
       ) : (
         <div className={styles.list}>
@@ -27,7 +35,7 @@ export default async function LearningsSection({ audienceId }: { audienceId: str
             <article key={note.slug} className={styles.row}>
               <div className={styles.meta}>
                 <span className={styles.period} data-current={note.current}>
-                  {note.date}
+                  {monthYear(note.date)}
                 </span>
                 <span className={styles.kind}>
                   {note.source ?? KIND_LABEL[note.kind]}
@@ -40,18 +48,17 @@ export default async function LearningsSection({ audienceId }: { audienceId: str
                   <span className={styles.strong}>{note.title}</span>
                 </h2>
 
-                {note.detail ? (
-                  <div
-                    className={styles.detail}
-                    dangerouslySetInnerHTML={{ __html: note.detail }}
-                  />
-                ) : (
-                  <span className={styles.muted}>no note yet</span>
-                )}
+                <Points points={note.points} />
 
-                <div className={styles.footer}>
-                  <Chips items={note.tags} />
-                </div>
+                {note.detail ? (
+                  <details className={styles.disclosure}>
+                    <summary className={styles.summary}>the long version</summary>
+                    <div
+                      className={styles.detail}
+                      dangerouslySetInnerHTML={{ __html: note.detail }}
+                    />
+                  </details>
+                ) : null}
               </div>
             </article>
           ))}

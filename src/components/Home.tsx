@@ -21,6 +21,8 @@ export async function Home({ audience }: { audience: Audience }) {
 
       <p className={styles.tagline}>{audience.tagline ?? identity.tagline}</p>
 
+      <p className={styles.where}>{identity.location}</p>
+
 
       <div className={styles.actions}>
         <a
