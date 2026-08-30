@@ -29,7 +29,8 @@ content/
   products/*.md        things people can go and use
   customers/*.md       who used them (names need permission)
   skills.json
-  education.json
+  education.json      shown under PROFILE
+  achievements.json   shown under PROFILE, empty until there is something
   socials.json
 ```
 
@@ -103,6 +104,30 @@ when empty the note is just its points, with no dead link.
 The left column shows `date` and `source` — "Sep 2025 / Habuild" — so the note
 itself never has to repeat when or where.
 
+## Adding an achievement
+
+`content/achievements.json`. Competition results, ratings, ranks — anything that is a
+credential rather than a job or a hobby. Renders under PROFILE, above contact.
+
+```json
+[
+  {
+    "title": "Specialist on Codeforces",
+    "note": "peak rating 1400",
+    "url": "https://codeforces.com/profile/<handle>",
+    "order": 1
+  },
+  { "title": "Winner, <hackathon name>", "note": "out of 120 teams", "year": "2025", "order": 2 }
+]
+```
+
+`title` is required; `note`, `year` and `url` are optional. The block does not render
+while the file is an empty array, so there is never an empty heading.
+
+Rule of thumb for where something goes: a **credential** (rating, rank, prize) is an
+achievement; a **sustained activity** (sport, teaching, a club) is `beyond/`; a **job**
+is `experience/`.
+
 ## Adding something to BEYOND
 
 `content/beyond/03-something.md`. Same shape as a learning, minus the date:
@@ -140,7 +165,7 @@ Drop `content/audiences/mentor.json`:
   "nameFont": "mono",
   "tagline": "Optional — overrides identity.tagline for this lens only.",
   "primaryAction": { "label": "book a call", "glyph": "→", "href": "mailto:..." },
-  "sections": ["experience", "learnings", "contact"],
+  "sections": ["experience", "learnings", "profile"],
   "order": 3,
   "default": false
 }
@@ -153,7 +178,7 @@ file may set `default: true` — that one is also served at `/`.
 
 `sections` may only list ids that have a component:
 `experience`, `learnings`, `products`, `services`, `customers`, `skills`,
-`beyond`, `contact`. A lens may list at most five.
+`beyond`, `profile`. A lens may list at most five.
 A new **kind** of section needs a component plus one line in
 `src/components/sections/registry.ts`. A new **entry** in an existing section is
 a content file and nothing else.

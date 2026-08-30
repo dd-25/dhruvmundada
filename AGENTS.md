@@ -32,6 +32,7 @@ content/                 the whole site's data
   audiences/*.json       one file per lens — theme, sections, primary action
   experience/*.md        frontmatter + a "read more" body
   learnings/ products/ services/ customers/ beyond/
+  skills.json education.json achievements.json socials.json
   skills.json socials.json education.json
 src/lib/content/
   schema.ts              zod, single source of truth for content shape
