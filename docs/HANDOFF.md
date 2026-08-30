@@ -1,5 +1,9 @@
 # Portfolio site — design state
 
+> **Historical.** Written before any code existed ("Nothing built yet"). Kept for the
+> rejected-options record, which still explains why the site is shaped this way. For
+> how it actually works now, read `../AGENTS.md`, `CONTENT.md` and `VOICE.md`.
+
 Carried over from the `mei` session. Nothing built yet. Design approved through
 architecture; UI direction pending final yes.
 

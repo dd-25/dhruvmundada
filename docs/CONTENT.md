@@ -1,5 +1,8 @@
 # Adding content
 
+This is the mechanics — which file, which field. For what to actually write in them,
+read `VOICE.md` first.
+
 Everything on the site comes from `content/`. Nothing here needs code changes.
 Edit a file, commit, push — GitHub Actions rebuilds and deploys.
 
@@ -17,12 +20,14 @@ content/experience/01-habuild-sde.md
 
 ```
 content/
-  identity.json        name, tagline, deltas, contact details
+  identity.json        name, tagline, contact details, resume link
   audiences/*.json     one file per lens — adds a route and a theme
   experience/*.md      roles
+  learnings/*.md       short notes on what something taught you
+  beyond/*.md          things outside the job — teaching, sport, a channel
   services/*.md        what you offer (client lens)
-  writing/*.md         posts
-  projects/*.md        empty for now
+  products/*.md        things people can go and use
+  customers/*.md       who used them (names need permission)
   skills.json
   education.json
   socials.json
@@ -44,8 +49,9 @@ current: true                  # the pulsing dot — only ONE per folder
 order: 0                       # lower sorts first
 audiences: ["*"]               # or ["engineer"] / ["client"]
 points:
-  - One line on what you owned.
+  - Cut checkout latency **62%** (1.4s to 530ms) by batching three sequential calls.
   - "Quote any line containing a colon: YAML reads it as a key otherwise."
+  - "**Quote a line starting with `**` too** — YAML reads a leading `*` as an alias."
 stack: [Go, Postgres, Kafka]
 ---
 
@@ -53,10 +59,65 @@ Anything below the dashes is the deep dive. It renders behind "read more".
 Leave it empty and the entry shows "no write-up yet" instead — no dead link.
 ```
 
-## Adding a post
+### Marking what matters in a point
 
-`content/writing/2026-09-connection-leaks.md`, same shape, with
-`title`, `blurb`, `date: YYYY-MM-DD`, optional `tags` and `external`.
+Wrap the part worth seeing in `**`. It renders highlighted — amber on the
+engineer lens, green on business, taken from that lens's accent colour.
+
+```yaml
+points:
+  - Cut p95 latency **45%** (209ms to 115ms), CPU **55%**, and peak memory **71%**.
+```
+
+This is the whole skim layer, so spend it. A recruiter reads the highlights
+and nothing else, and a point with four of them has none. Mark the number or
+the outcome, leave the explanation plain. A point with nothing worth marking
+is fine unmarked.
+
+Also available inside a point: `` `code` `` and `[links](https://example.com)`.
+Each point must stay one paragraph — a blank line inside one fails the build
+with the file named.
+
+## Adding a learning
+
+`content/learnings/08-something.md`. A note is a curious title, up to three
+points, and an optional long version:
+
+```markdown
+---
+title: The dashboard was wrong and nothing had broken
+source: Habuild          # optional — the company or project it came from
+kind: work               # or "general" for something learnt outside work
+date: 2025-09            # YYYY-MM, renders as "Sep 2025"
+order: 5
+audiences: ["*"]
+points:                  # 1 to 3. This is the whole note at a glance.
+  - The API holds a day's numbers back for **24 to 48 hours**.
+  - Re-reading the last 3 to 5 days on every run fixed it.
+---
+
+Below the dashes is optional. When present it renders behind "the long version";
+when empty the note is just its points, with no dead link.
+```
+
+The left column shows `date` and `source` — "Sep 2025 / Habuild" — so the note
+itself never has to repeat when or where.
+
+## Adding something to BEYOND
+
+`content/beyond/03-something.md`. Same shape as a learning, minus the date:
+
+```markdown
+---
+title: Karate, boxing and kickboxing
+period: Dec 2025 - Mar 2026   # optional. Omit and the row drops its left column
+url: https://example.com      # optional, links the title
+order: 2
+audiences: ["*"]
+points:
+  - Up to three. One is fine.
+---
+```
 
 ## Changing what shows, and in what order
 
@@ -79,7 +140,7 @@ Drop `content/audiences/mentor.json`:
   "nameFont": "mono",
   "tagline": "Optional — overrides identity.tagline for this lens only.",
   "primaryAction": { "label": "book a call", "glyph": "→", "href": "mailto:..." },
-  "sections": ["experience", "writing", "contact"],
+  "sections": ["experience", "learnings", "contact"],
   "order": 3,
   "default": false
 }
@@ -91,7 +152,8 @@ file may set `default: true` — that one is also served at `/`.
 ## The one limit
 
 `sections` may only list ids that have a component:
-`experience`, `services`, `skills`, `writing`, `contact`.
+`experience`, `learnings`, `products`, `services`, `customers`, `skills`,
+`beyond`, `contact`. A lens may list at most five.
 A new **kind** of section needs a component plus one line in
 `src/components/sections/registry.ts`. A new **entry** in an existing section is
 a content file and nothing else.
