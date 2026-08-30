@@ -35,7 +35,8 @@ What is settled and why, so nobody re-litigates it. For how the site works now r
 | Teaching lives in `beyond`, not `experience` | The experience timeline should read as engineering progression. Teaching between two tech roles makes a reader re-parse it. |
 | `projects` renamed `products` | Everything listed is something a visitor can go and use. A prospect wants products. |
 | `clients` renamed `customers`, heading `WHO SAID YES` | A subscriber bought a product; nobody hired a service. `users` would drop the fact that they paid. |
-| `contact` became `profile` | Education, achievements and how to reach him are one block about the person. A separate contact section for three lines was not worth a nav slot. |
+| `contact` became `profile` | Education and how to reach him are one block about the person. A separate contact section for three lines was not worth a nav slot. |
+| No achievements block for now | Built once and shelved — there was nothing real to put in it, and an empty heading is worse than no heading. If it comes back, the rows continue EDUCATION rather than opening a section: a rating and a qualification are the same kind of thing to a reader. |
 | Learnings are general lessons, not project retrospectives | A reader should be able to use one without knowing the job it came from. |
 | No conversion or funnel numbers | "Pitched 8, closed 3" invites "why did five say no". |
 | No tech stack on the business lens | Prospects buy an outcome. The stack is on the engineer lens. |

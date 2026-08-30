@@ -163,8 +163,7 @@ experience read-more is for.
 ### Profile
 
 The last section on both lenses, and it doubles as contact — there is no separate
-contact section. Education first, then achievements when `achievements.json` has any,
-then how to reach him.
+contact section. Education first, then how to reach him.
 
 The page carries **two headings, `EDUCATION` and `CONTACT`**, not one called PROFILE.
 Each keeps the rule under its heading — that rule opens a block. Every row inside is

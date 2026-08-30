@@ -115,7 +115,7 @@
   color: var(--dim);
 }
 
-/* Achievements, one block each. The old list set every point in the same dim
+/* Points, one block each. The old list set every point in the same dim
    weight behind a literal em dash, so nothing anchored the eye and it read as
    one paragraph. Now the emphasis a content file marks with ** carries the
    scan, and the marker is a hairline rather than a character. */

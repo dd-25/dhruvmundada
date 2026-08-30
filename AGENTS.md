@@ -68,6 +68,9 @@ is missing, ask rather than inferring intent from the edited output.
 - **`basePath` is `/dhruvmundada`.** Raw `href`/`src` outside `next/link` and
   `next/image` must go through `assetPath()` in `src/lib/paths.ts`.
 - **`public/.nojekyll` is load-bearing.** Without it GitHub Pages drops `_next/`.
+- **`src/app/icon.svg` is the site icon.** App Router picks it up by filename and
+  emits the `<link rel="icon">`; there is no `favicon.ico` and adding one back would
+  take precedence over it.
 - **No client-side state for navigation.** The lens toggle is a pair of links and
   progressive disclosure is native `<details>`. Keep it that way — it is why the
   static export works and why pages render instantly.

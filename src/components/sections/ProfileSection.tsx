@@ -1,6 +1,5 @@
 import { PhoneIcon, SocialIcon } from "@/components/Icons";
 import {
-  getAchievements,
   getAudienceById,
   getEducation,
   getIdentity,
@@ -36,12 +35,11 @@ function Row({
 }
 
 export default async function ProfileSection({ audienceId }: { audienceId: string }) {
-  const [identity, socials, audience, education, achievements] = await Promise.all([
+  const [identity, socials, audience, education] = await Promise.all([
     getIdentity(),
     getSocials(),
     getAudienceById(audienceId),
     getEducation(),
-    getAchievements(),
   ]);
 
   // Email has its own row below, so listing it again under ELSEWHERE printed the
@@ -70,27 +68,6 @@ export default async function ProfileSection({ audienceId }: { audienceId: strin
                 {` — ${entry.institution}`}
               </p>
               {entry.note ? <p className={styles.figure}>{entry.note}</p> : null}
-            </div>
-          </div>
-        ))}
-
-        {achievements.map((item) => (
-          <div key={item.title} className={`${styles.row} ${styles.rowGroup}`}>
-            <div className={styles.meta}>
-              <span className={styles.period}>{item.label.toUpperCase()}</span>
-              {item.year ? <span className={styles.kind}>{item.year}</span> : null}
-            </div>
-            <div className={`${styles.body} ${styles.bodyTight}`}>
-              <p className={styles.pointText}>
-                {item.url ? (
-                  <a className={styles.link} href={item.url} target="_blank" rel="noreferrer">
-                    {item.title} ↗
-                  </a>
-                ) : (
-                  <span className={styles.strongInline}>{item.title}</span>
-                )}
-              </p>
-              {item.note ? <p className={styles.figure}>{item.note}</p> : null}
             </div>
           </div>
         ))}
