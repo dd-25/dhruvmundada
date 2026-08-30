@@ -37,6 +37,16 @@
   text-wrap: pretty;
 }
 
+/* Where he is. Quiet, under the tagline — recruiters look for it and it has no
+   other home now that the profile section is contact links only. */
+.where {
+  margin: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+}
+
 .actions {
   display: flex;
   align-items: center;

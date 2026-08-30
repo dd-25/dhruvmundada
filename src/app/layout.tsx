@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 
-import { getAudiences, getIdentity, getSocials } from "@/lib/content/loader";
-import { BASE_PATH, SITE_URL } from "@/lib/paths";
+import { getAudiences, getDefaultAudience, getIdentity, getSocials } from "@/lib/content/loader";
+import { BASE_PATH, SITE_URL, lensIcon } from "@/lib/paths";
 
 import "./globals.css";
 
@@ -28,14 +28,17 @@ const serif = IBM_Plex_Serif({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const identity = await getIdentity();
+  const [identity, fallbackLens] = await Promise.all([getIdentity(), getDefaultAudience()]);
   return {
     // Without this every canonical and og:url resolves relative, which on a
     // project-path deploy points at the wrong place.
     metadataBase: new URL(SITE_URL),
-    title: { default: identity.name, template: `%s · ${identity.name}` },
+    // Every tab reads just the name — no section, no lens, no separator.
+    title: identity.name,
     description: identity.tagline,
     alternates: { canonical: "/" },
+    // "/" serves the default lens, so it carries that lens's icon.
+    icons: lensIcon(fallbackLens.id),
     openGraph: {
       title: identity.name,
       description: identity.tagline,

@@ -27,14 +27,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { audience: audienceId, section } = await params;
+  const { audience: audienceId } = await params;
   const audience = await getAudienceById(audienceId);
   if (!audience) return {};
 
-  return {
-    title: `${section} · for ${audience.label}s`,
-    icons: { icon: lensIcon(audience.id) },
-  };
+  return { icons: lensIcon(audience.id) };
 }
 
 export default async function SectionPage({ params }: Params) {

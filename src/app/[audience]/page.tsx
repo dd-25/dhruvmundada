@@ -19,11 +19,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   const description = audience.tagline ?? identity.tagline;
   return {
-    title: `For ${audience.label}s`,
     description,
     // The default lens is also served at "/". Point search engines at the short URL.
     alternates: audience.default ? { canonical: "/" } : undefined,
-    icons: { icon: lensIcon(audience.id) },
+    icons: lensIcon(audience.id),
   };
 }
 
