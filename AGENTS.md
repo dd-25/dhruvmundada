@@ -74,6 +74,19 @@ is missing, ask rather than inferring intent from the edited output.
   and refetch, which is what a flickering favicon is. `/` uses the default lens's
   icon for the same reason. There is deliberately no `app/icon.svg` or
   `favicon.ico`; either would take precedence and reintroduce the mismatch.
+- **The Search Console token in `layout.tsx` is not a leaked secret.** A verification
+  token binds a site to one Google account and is worthless to anyone who does not
+  already control this repo. It is meant to be served publicly — deleting it un-verifies
+  the property.
+- **Canonical is set per page and never on the layout.** Next inherits layout
+  metadata into every child, so one `alternates` there canonicalises the whole site
+  to a single URL and Google drops the rest as duplicates. `layout.tsx` sets none;
+  `page.tsx`, `[audience]` and `[audience]/[section]` each set their own. The default
+  lens points at `/`, because `/` and `/engineer/` are the same page.
+- **Sitemap URLs carry a trailing slash** to match `trailingSlash: true`. Without it
+  every entry 301s. The default lens is deliberately absent from the sitemap — it
+  canonicalises to `/`, which is already listed. `src/app/sitemap.ts` is the sitemap;
+  `robots.ts` points at it. Both are `force-static`, so they ship in the export.
 - **Every tab reads just the name.** `layout.tsx` sets an absolute title and no page
   overrides it. Unique per-page titles would be marginally better for search — this
   is a deliberate trade, not an oversight.
