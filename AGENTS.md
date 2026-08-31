@@ -83,6 +83,12 @@ is missing, ask rather than inferring intent from the edited output.
   to a single URL and Google drops the rest as duplicates. `layout.tsx` sets none;
   `page.tsx`, `[audience]` and `[audience]/[section]` each set their own. The default
   lens points at `/`, because `/` and `/engineer/` are the same page.
+- **`robots.txt` is generated but Google never reads it.** A crawler only ever
+  fetches `robots.txt` from the domain root, and `https://dd-25.github.io/robots.txt`
+  is not ours — it 404s, which means "crawl everything", so nothing is blocked. The
+  consequence is that the `Sitemap:` autodiscovery line has no effect and the sitemap
+  has to be submitted by hand in Search Console. Keep the file: it becomes the real
+  one the day a custom domain drops `basePath`.
 - **Sitemap URLs carry a trailing slash** to match `trailingSlash: true`. Without it
   every entry 301s. The default lens is deliberately absent from the sitemap — it
   canonicalises to `/`, which is already listed. `src/app/sitemap.ts` is the sitemap;
