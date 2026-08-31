@@ -18,6 +18,25 @@ What is settled and why, so nobody re-litigates it. For how the site works now r
 | Audiences | one static route per audience, generated from `content/audiences/*.json` | Add a JSON file, get a new route. No code. |
 | Domain | none for now | Buy later; removing basePath is one config line. |
 
+## Search
+
+The goal is narrow and worth stating, because it stops the scope creeping: **a search
+for "Dhruv Mundada" should return this site.** Not "backend developer", not
+"FastAPI consultant" — those are head terms owned by sites with years of links.
+
+| Decision | Why |
+|---|---|
+| Verified via the `<meta>` tag, not a file in `public/` | Next has `metadata.verification`, so it is one line and no stray file. The token is not a secret either way; both methods are public by design. |
+| Canonical per page, never on the layout | Layout metadata is inherited, so one canonical there tells Google all 16 pages are duplicates of the home page. This shipped broken and indexed one URL out of twelve. |
+| Sitemap URLs end in a slash | `trailingSlash: true` makes every page a directory index. Without the slash every entry is a 301 and gets reported as a redirect. |
+| Default lens omitted from the sitemap | `/` and `/engineer/` are the same page; `/engineer/` canonicalises to `/`. Submitting both submits a known duplicate. |
+| `Person` JSON-LD with `sameAs`, `alumniOf`, `worksFor` | A name query is an entity-matching problem. The structured record is what lets Google decide this Dhruv Mundada is the one with that GitHub and that LinkedIn, rather than a namesake. |
+| One title, `Dhruv Mundada`, on every page | Unique titles would help slightly. His call, and the trade is defensible: the page that should rank for the name is `/`, and the name is the whole title there. |
+
+**The two biggest levers are not in this repo.** A custom domain (`dd-25.github.io` is
+a shared domain and the site is a subdirectory on it) and reciprocal links from the
+GitHub and LinkedIn profiles, which is what makes `sameAs` two-way and believable.
+
 ## Rejected, with reason
 
 - **Astro** — better fit technically, lost to the user's explicit learning goal. Their call.

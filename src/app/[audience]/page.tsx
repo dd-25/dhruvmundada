@@ -20,8 +20,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const description = audience.tagline ?? identity.tagline;
   return {
     description,
-    // The default lens is also served at "/". Point search engines at the short URL.
-    alternates: audience.default ? { canonical: "/" } : undefined,
+    // Every page sets its own. The layout must not, because Next inherits layout
+    // metadata into children, which would canonicalise the whole site to one URL.
+    // The default lens is also served at "/", so it points at the short URL.
+    alternates: { canonical: audience.default ? "/" : `/${audience.id}/` },
     icons: lensIcon(audience.id),
   };
 }

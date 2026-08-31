@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
 
-import { getAudiences, getDefaultAudience, getIdentity, getSocials } from "@/lib/content/loader";
+import {
+  getAudiences,
+  getDefaultAudience,
+  getEducation,
+  getExperience,
+  getIdentity,
+  getSocials,
+} from "@/lib/content/loader";
 import { BASE_PATH, SITE_URL, lensIcon } from "@/lib/paths";
 
 import "./globals.css";
@@ -33,10 +40,12 @@ export async function generateMetadata(): Promise<Metadata> {
     // Without this every canonical and og:url resolves relative, which on a
     // project-path deploy points at the wrong place.
     metadataBase: new URL(SITE_URL),
+    // Search Console ownership. Public by design — it proves the site to one Google
+    // account and is worthless to anyone else, so it belongs in the repo.
+    verification: { google: "qSmiTFFwK6qAy_ar58W7DVW2sZD6NmL1Yzpq_BgIpj4" },
     // Every tab reads just the name — no section, no lens, no separator.
     title: identity.name,
     description: identity.tagline,
-    alternates: { canonical: "/" },
     // "/" serves the default lens, so it carries that lens's icon.
     icons: lensIcon(fallbackLens.id),
     openGraph: {
@@ -55,16 +64,30 @@ export async function generateMetadata(): Promise<Metadata> {
  * is what lets a name query resolve to this site rather than to a namesake.
  */
 async function personJsonLd() {
-  const [identity, socials] = await Promise.all([getIdentity(), getSocials()]);
+  const [identity, socials, education, experience] = await Promise.all([
+    getIdentity(),
+    getSocials(),
+    getEducation(),
+    getExperience(),
+  ]);
+  // Education is ordered highest-qualification-first, so [0] is the degree. The
+  // schools below it are true but add nothing a search engine can disambiguate on.
+  const degree = education[0];
+  const role = experience.find((entry) => entry.current);
+
   return {
     "@context": "https://schema.org",
     "@type": "Person",
     name: identity.name,
     url: SITE_URL,
     email: identity.email,
-    jobTitle: "Software Engineer",
+    jobTitle: role?.role ?? "Software Engineer",
     description: identity.tagline,
     address: { "@type": "PostalAddress", addressLocality: identity.location },
+    ...(degree && {
+      alumniOf: { "@type": "CollegeOrUniversity", name: degree.institution },
+    }),
+    ...(role && { worksFor: { "@type": "Organization", name: role.company } }),
     sameAs: socials.filter((s) => s.url.startsWith("http")).map((s) => s.url),
   };
 }

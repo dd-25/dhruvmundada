@@ -27,11 +27,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { audience: audienceId } = await params;
+  const { audience: audienceId, section } = await params;
   const audience = await getAudienceById(audienceId);
   if (!audience) return {};
 
-  return { icons: lensIcon(audience.id) };
+  return {
+    // Without this the page inherits a canonical and tells Google it is a
+    // duplicate of another URL, which drops it from the index.
+    alternates: { canonical: `/${audience.id}/${section}/` },
+    icons: lensIcon(audience.id),
+  };
 }
 
 export default async function SectionPage({ params }: Params) {
