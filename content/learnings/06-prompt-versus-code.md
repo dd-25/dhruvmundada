@@ -3,7 +3,7 @@ title: A rule in the prompt is a request, not a guarantee
 source: Habuild
 kind: work
 date: 2026-10
-order: 6
+order: 0
 audiences: ["*"]
 points:
   - Anything an agent must never get wrong belongs in code. Whether a member has already been asked something is state, so it lives in the graph, not in a sentence asking the model to remember.

@@ -3,7 +3,7 @@ title: Never wait on another service while holding a lock
 source: Habuild
 kind: work
 date: 2026-10
-order: 7
+order: 0
 audiences: ["*"]
 points:
   - A network call inside a database transaction holds its locks for as long as the other service takes. If that service calls back and touches the same rows, both sides wait on each other until a timeout ends it.

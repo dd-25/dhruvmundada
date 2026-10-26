@@ -3,7 +3,7 @@ title: A percentage rollout is an experiment if you log both sides
 source: Habuild
 kind: work
 date: 2026-10
-order: 8
+order: 0
 audiences: ["*"]
 points:
   - Bucket by hashing a stable key, not by random draw. The same user lands on the same side every time, so nobody flips between old and new behaviour mid-conversation.
