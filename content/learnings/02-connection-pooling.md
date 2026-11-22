@@ -11,7 +11,7 @@ points:
   - "Pooling alone is half of it. Without a timeout a dead connection keeps its slot forever, so every client needs both a pool size and a bound on how long it may wait."
 ---
 
-The engagement service took webhooks continuously from one upstream, which is
+A webhook consumer took events continuously from one upstream, which is
 about as hot as a connection gets, and built a fresh client for each one.
 Pooling it gave back the handshake time, the CPU spent on encrypt and decrypt,
 and the memory held by sockets waiting to close.

@@ -8,11 +8,9 @@ url: https://billtrackr.in
 order: 2
 audiences: ["engineer"]
 points:
-  - Built a B2B SaaS platform replacing scattered Excel billing for engineering consultancies — onboarded **3 clients** running **800+ projects** and **150+ invoices/month**.
-  - Cut bill update and generation from **55 minutes to under 7 minutes** with project-linked invoices, receipt tracking, deductions, and exports.
-  - Architected a **multi-tenant** backend with strict tenant isolation, **role-based access control**, and tiered subscriptions with real-time feature gating.
-  - Made invoice numbering **concurrency-safe** under contention, and kept project and invoice lists responsive with **pagination and indexed queries**.
-  - Built real-time analytics dashboards and automated invoice generation with PDF and Excel export.
+  - Engineered a B2B SaaS platform replacing error-prone Excel and manual billing for civil engineering consultancies — onboarded **3 clients** managing **800+ projects** and **150+ invoices/month**, cutting bill update and generation from **~55 minutes to under 7 minutes**.
+  - Built real-time analytics dashboards and automated invoice generation with **concurrency-safe** sequencing and PDF and Excel exports, giving project-level financial tracking that holds up under concurrent workloads.
+  - Architected a secure **multi-tenant** backend with strict data isolation and **role-based access control**, with tiered subscriptions, real-time feature gating and automated lifecycle management.
 stack: [TypeScript, Node.js, PostgreSQL, Prisma, React.js]
 ---
 
