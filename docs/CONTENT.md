@@ -79,6 +79,22 @@ Also available inside a point: `` `code` `` and `[links](https://example.com)`.
 Each point must stay one paragraph — a blank line inside one fails the build
 with the file named.
 
+### The figure strip
+
+`highlights` in a role's frontmatter renders as a row of figure tiles above its
+points — what that role moved, before the detail. Four at most, optional:
+
+```yaml
+highlights:
+  - { label: "p95 latency", from: "209ms", to: "115ms" }
+  - { label: "users served", to: "5M+" }
+```
+
+`from` renders struck through before `to` for a measured change; leave it out for
+a plain figure. Each figure must already appear in a point below it — the strip is
+a summary, never a new claim. It lives on the experience page only; the lens home
+stays general on purpose.
+
 ## Adding a learning
 
 `content/learnings/08-something.md`. A note is a curious title, up to three
@@ -142,18 +158,10 @@ Drop `content/audiences/mentor.json`:
   "tagline": "Optional — overrides identity.tagline for this lens only.",
   "primaryAction": { "label": "book a call", "glyph": "→", "href": "mailto:..." },
   "sections": ["experience", "learnings", "profile"],
-  "highlights": [
-    { "label": "p95 latency", "from": "209ms", "to": "115ms" },
-    { "label": "users served", "to": "5M+" }
-  ],
   "order": 3,
   "default": false
 }
 ```
-
-`highlights` is the figure strip under the tagline on the lens home: four at most,
-optional. `from` renders struck through before `to` for a measured change; leave it
-out for a plain figure. Every figure needs the same source as a bullet would.
 
 The line above the name (`NOW · role · company`) is not a field — it comes from the
 experience record with `current: true` that the lens can see.

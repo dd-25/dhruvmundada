@@ -68,7 +68,7 @@ GitHub and LinkedIn profiles, which is what makes `sameAs` two-way and believabl
 | The résumé is the source of truth | His call. Where site and résumé disagree, the résumé wins — e.g. the slow-endpoint figure is the résumé's ~8s to ~300ms. |
 | No company-internal words | An outsider has no context for internal team or service names. General wording, as on the résumé. |
 | AI first on both lenses | Positioning is AI engineer plus backend engineer; business lens sells AI integration and AI/backend automation into operations. |
-| Hero figure strip (`highlights`) | Duplicates numbers in experience, on purpose — the 15-second scan is the reader model, and the strip is the scan. Data in the lens file, not code. |
+| Figure strip per role, not on the home page | His call. The home page is general — who he is, not latency numbers. Each role on the experience page opens with up to four figures (`highlights` in its frontmatter), which is where a reader is already looking for what that role moved. |
 | Token-per-call cut dropped | A cost setting, not an outcome a reader can weigh. His call. |
 
 ## Never revisited without asking
