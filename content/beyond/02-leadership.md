@@ -5,7 +5,7 @@ order: 2
 audiences: ["*"]
 points:
   - Served as school Head Boy, leading daily assemblies and organising Teachers' Day, Ganpati, Navratri, sports day and the annual function.
-  - Co-lead of Estoria, the drama and poetry club at IIIT Nagpur — the position under the club lead — running the calendar through Natyaksh, the annual drama and dance event, and Abhivyakti, the annual cultural fest.
+  - Co-led Estoria, the drama and poetry club at IIIT Nagpur — organised its events through the year and led three major events at the annual cultural fest, drawing **5,000+ attendees**.
   - Performed in various local community events during 6th and 7th grade.
 ---
 

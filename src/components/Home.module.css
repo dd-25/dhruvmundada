@@ -17,23 +17,24 @@
 .name[data-font="mono"] {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-weight: 500;
-  font-size: clamp(34px, 5.2vw, 58px);
+  font-size: clamp(40px, 6vw, 72px);
   letter-spacing: -0.022em;
 }
 
 .name[data-font="serif"] {
   font-family: var(--font-serif), Georgia, serif;
   font-weight: 400;
-  font-size: clamp(40px, 6.2vw, 68px);
+  font-size: clamp(46px, 7vw, 84px);
   letter-spacing: -0.01em;
 }
 
 .tagline {
   margin: 24px 0 0;
-  max-width: 32ch;
-  font-size: clamp(17px, 1.7vw, 20px);
-  line-height: 1.55;
-  color: var(--dim);
+  max-width: 34ch;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.5;
+  color: var(--text);
+  opacity: 0.86;
   text-wrap: pretty;
 }
 
@@ -42,9 +43,10 @@
 .where {
   margin: 0;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   color: var(--faint);
+  margin-top: 14px;
 }
 
 .actions {
@@ -62,9 +64,9 @@
   background: var(--accent);
   color: var(--accent-ink);
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.02em;
-  padding: 13px 20px;
+  padding: 14px 22px;
   border-radius: 3px;
   min-height: 44px;
   transition: filter 160ms ease;
@@ -86,9 +88,9 @@
   align-items: center;
   gap: 8px;
   color: var(--text);
-  opacity: 0.55;
+  opacity: 0.6;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
+  font-size: 14px;
   min-height: 44px;
   transition: opacity 180ms ease;
 }
@@ -110,41 +112,58 @@
   }
 }
 
-/* Signature: every result on the résumé is a measured reduction. The strip
-   states them as deltas — old value dimmed, new value in accent. */
-.deltas {
+/* What he is doing right now, above the name. Reuses the live marker. */
+.now {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 26px;
-  margin: 26px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.delta {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.01em;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--dim);
 }
 
-.deltaLabel {
-  color: var(--faint);
-}
-
-.deltaFrom {
-  color: var(--faint);
-  text-decoration: line-through;
-  text-decoration-thickness: 1px;
-  opacity: 0.8;
-}
-
-.deltaArrow {
-  color: var(--faint);
-}
-
-.deltaTo {
+.nowLabel {
   color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Engineer lens: a block cursor after the mono name. Blinks in steps, like a
+   real caret; reduced motion freezes it visible. */
+.name[data-font="mono"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.82em;
+  margin-left: 0.12em;
+  vertical-align: -0.06em;
+  background: var(--accent);
+  animation: caret 1.1s steps(1) infinite;
+}
+
+.name[data-font="mono"] {
+  text-shadow: 0 0 42px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* Business lens: a short accent rule under the serif name. */
+.name[data-font="serif"]::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 18px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+@keyframes caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }

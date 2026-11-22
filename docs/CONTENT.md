@@ -30,6 +30,7 @@ content/
   customers/*.md       who used them (names need permission)
   skills.json
   education.json      shown under PROFILE — `level` is the left-column key
+  achievements.json   ratings and placings, under ACHIEVEMENTS in PROFILE — `label` is the key
   socials.json
 ```
 
@@ -77,6 +78,22 @@ is fine unmarked.
 Also available inside a point: `` `code` `` and `[links](https://example.com)`.
 Each point must stay one paragraph — a blank line inside one fails the build
 with the file named.
+
+### The figure strip
+
+`highlights` in a role's frontmatter renders as a row of figure tiles above its
+points — what that role moved, before the detail. Four at most, optional:
+
+```yaml
+highlights:
+  - { label: "p95 latency", from: "209ms", to: "115ms" }
+  - { label: "users served", to: "5M+" }
+```
+
+`from` renders struck through before `to` for a measured change; leave it out for
+a plain figure. Each figure must already appear in a point below it — the strip is
+a summary, never a new claim. It lives on the experience page only; the lens home
+stays general on purpose.
 
 ## Adding a learning
 
@@ -145,6 +162,9 @@ Drop `content/audiences/mentor.json`:
   "default": false
 }
 ```
+
+The line above the name (`NOW · role · company`) is not a field — it comes from the
+experience record with `current: true` that the lens can see.
 
 `/mentor/` and its section pages exist on the next build. Exactly one audience
 file may set `default: true` — that one is also served at `/`.

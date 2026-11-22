@@ -1,5 +1,6 @@
 import { PhoneIcon, SocialIcon } from "@/components/Icons";
 import {
+  getAchievements,
   getAudienceById,
   getEducation,
   getIdentity,
@@ -35,11 +36,12 @@ function Row({
 }
 
 export default async function ProfileSection({ audienceId }: { audienceId: string }) {
-  const [identity, socials, audience, education] = await Promise.all([
+  const [identity, socials, audience, education, achievements] = await Promise.all([
     getIdentity(),
     getSocials(),
     getAudienceById(audienceId),
     getEducation(),
+    getAchievements(),
   ]);
 
   // Email has its own row below, so listing it again under ELSEWHERE printed the
@@ -71,8 +73,30 @@ export default async function ProfileSection({ audienceId }: { audienceId: strin
             </div>
           </div>
         ))}
-
       </div>
+
+      {achievements.length > 0 ? (
+        <>
+          <GroupHead title="ACHIEVEMENTS" />
+          <div className={styles.list}>
+            {achievements.map((entry) => (
+              <div key={entry.title} className={`${styles.row} ${styles.rowGroup}`}>
+                <div className={styles.meta}>
+                  <span className={styles.period}>{entry.label.toUpperCase()}</span>
+                  {entry.period ? <span className={styles.kind}>{entry.period}</span> : null}
+                </div>
+                <div className={`${styles.body} ${styles.bodyTight}`}>
+                  <p className={styles.pointText}>
+                    <span className={styles.strongInline}>{entry.title}</span>
+                    {entry.context ? ` — ${entry.context}` : null}
+                  </p>
+                  {entry.note ? <p className={styles.figure}>{entry.note}</p> : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null}
 
       <GroupHead title="CONTACT" />
 

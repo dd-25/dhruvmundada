@@ -55,11 +55,21 @@ GitHub and LinkedIn profiles, which is what makes `sameAs` two-way and believabl
 | `projects` renamed `products` | Everything listed is something a visitor can go and use. A prospect wants products. |
 | `clients` renamed `customers`, heading `WHO SAID YES` | A subscriber bought a product; nobody hired a service. `users` would drop the fact that they paid. |
 | `contact` became `profile` | Education and how to reach him are one block about the person. A separate contact section for three lines was not worth a nav slot. |
-| No achievements block for now | Built once and shelved — there was nothing real to put in it, and an empty heading is worse than no heading. If it comes back, the rows continue EDUCATION rather than opening a section: a rating and a qualification are the same kind of thing to a reader. |
+| Achievements are a block inside PROFILE, not a section | Came back in the Nov 2026 refresh with real rows (ratings, hackathon placings). A heading under EDUCATION, same row shape — a rating and a qualification are the same kind of thing to a reader, and a nav slot for three rows is not worth it. |
 | Learnings are general lessons, not project retrospectives | A reader should be able to use one without knowing the job it came from. |
 | No conversion or funnel numbers | "Pitched 8, closed 3" invites "why did five say no". |
 | No tech stack on the business lens | Prospects buy an outcome. The stack is on the engineer lens. |
 | The `writing` section kind was removed | No content, no lens listed it. Re-add is a component plus one registry line. |
+
+## Settled in the Nov 2026 refresh
+
+| Decision | Why |
+|---|---|
+| The résumé is the source of truth | His call. Where site and résumé disagree, the résumé wins — e.g. the slow-endpoint figure is the résumé's ~8s to ~300ms. |
+| No company-internal words | An outsider has no context for internal team or service names. General wording, as on the résumé. |
+| AI first on both lenses | Positioning is AI engineer plus backend engineer; business lens sells AI integration and AI/backend automation into operations. |
+| Figure strip per role, not on the home page | His call. The home page is general — who he is, not latency numbers. Each role on the experience page opens with up to four figures (`highlights` in its frontmatter), which is where a reader is already looking for what that role moved. |
+| Token-per-call cut dropped | A cost setting, not an outcome a reader can weigh. His call. |
 
 ## Never revisited without asking
 

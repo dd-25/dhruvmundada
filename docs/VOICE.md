@@ -36,6 +36,10 @@ These are not style preferences. Getting one wrong costs Dhruv something real.
   from Dhruv, do not write it. Ask.
 - **Anything unflattering about an employer**, including quantified criticism of
   their code.
+- **Company-internal names.** Internal team names, service names, vendor tools only
+  insiders know, internal IDs. An outsider has no context for them, so they cost a
+  reader effort and buy nothing. Say what the thing is — *a FastAPI service*, *a
+  webhook consumer*, *the review team* — the way the résumé does.
 - **Family sourcing, personal circumstances, or anything he has asked to drop.**
   The inventory records these; check it before re-adding something.
 
@@ -271,6 +275,10 @@ for the person reading, in one sentence that is still true next year.
   get wrong* is a claim someone can want. *does backend development* is a job title.
 
 ## The source material
+
+**The résumé wins.** Where `content/` and his current résumé disagree on a fact, a
+number or a wording, the résumé is the source of truth. Site-only facts that do not
+conflict may stay.
 
 `scratchpad/raw-input.md` holds Dhruv's own words verbatim, and
 `scratchpad/raw-inventory.md` maps every fact to where it landed or why it was
