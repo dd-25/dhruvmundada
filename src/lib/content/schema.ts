@@ -40,6 +40,20 @@ export const audienceSchema = z.object({
   sections: z.array(z.string().min(1)).min(1).max(5),
   /** Social ids to show. Omit to show all of socials.json. */
   socials: z.array(z.string().min(1)).min(1).optional(),
+  /**
+   * The hero proof strip. `from` renders struck through before `to`, for a
+   * measured change; omit it for a plain figure. Four at most — it is a scan.
+   */
+  highlights: z
+    .array(
+      z.object({
+        label: z.string().min(1),
+        from: z.string().min(1).optional(),
+        to: z.string().min(1),
+      }),
+    )
+    .max(4)
+    .default([]),
   order: z.number().int().default(100),
   default: z.boolean().default(false),
 });
@@ -147,6 +161,19 @@ export const educationSchema = z.object({
   order: z.number().int().default(100),
 });
 
+/** Rows under ACHIEVEMENTS in the profile section, shaped like education rows. */
+export const achievementSchema = z.object({
+  /** The left-column label — "RATING", "HACKATHON". */
+  label: z.string().min(1),
+  period: z.string().optional(),
+  title: z.string().min(1),
+  /** Where, or the figure behind the title. Renders after an em dash. */
+  context: z.string().optional(),
+  note: z.string().optional(),
+  order: z.number().int().default(100),
+});
+
+export type Achievement = z.infer<typeof achievementSchema>;
 export type Identity = z.infer<typeof identitySchema>;
 export type Audience = z.infer<typeof audienceSchema>;
 export type Social = z.infer<typeof socialSchema>;

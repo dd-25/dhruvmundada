@@ -4,7 +4,7 @@
   "modeLabel": "BUSINESS",
   "theme": "light",
   "nameFont": "serif",
-  "tagline": "I build the software a business runs on, and make what it already runs on faster and more reliable.",
+  "tagline": "I put AI and automation into the work your business already does, so fewer hours go into copying, chasing and checking.",
   "primaryAction": {
     "label": "book a call",
     "glyph": "→",
@@ -20,6 +20,25 @@
     "linkedin",
     "email",
     "github"
+  ],
+  "highlights": [
+    {
+      "label": "billing cycle",
+      "from": "55 min",
+      "to": "<7 min"
+    },
+    {
+      "label": "projects tracked",
+      "to": "800+"
+    },
+    {
+      "label": "invoices/month",
+      "to": "150+"
+    },
+    {
+      "label": "queries answered by AI",
+      "to": "70%+"
+    }
   ],
   "order": 2,
   "default": false

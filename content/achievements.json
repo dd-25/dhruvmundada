@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Rating",
+    "title": "Specialist on Codeforces, 3 Star on CodeChef",
+    "note": "1400+ · 1700+",
+    "order": 1
+  },
+  {
+    "label": "Hackathon",
+    "period": "2024",
+    "title": "5th of 250+ teams",
+    "context": "HEREvolution Hackathon, APOGEE'24, BITS Pilani",
+    "order": 2
+  },
+  {
+    "label": "Hackathon",
+    "period": "2024",
+    "title": "5th of 100+ teams",
+    "context": "Genathon, Tantrafiesta'24, IIIT Nagpur",
+    "order": 3
+  }
+]

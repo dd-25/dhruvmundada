@@ -4,7 +4,7 @@
   "modeLabel": "ENGINEER",
   "theme": "dark",
   "nameFont": "mono",
-  "tagline": "Backend and AI engineer. I make systems faster, cheaper, and harder to get wrong.",
+  "tagline": "AI and backend engineer. I ship AI that holds up in production, on backends that stay fast under load.",
   "primaryAction": {
     "label": "view résumé",
     "glyph": "→",
@@ -21,6 +21,25 @@
     "github",
     "linkedin",
     "email"
+  ],
+  "highlights": [
+    {
+      "label": "AI queries handled",
+      "to": "70%+"
+    },
+    {
+      "label": "users served",
+      "to": "5M+"
+    },
+    {
+      "label": "requests/week",
+      "to": "~18M"
+    },
+    {
+      "label": "p95 latency",
+      "from": "209ms",
+      "to": "115ms"
+    }
   ],
   "order": 1,
   "default": true
