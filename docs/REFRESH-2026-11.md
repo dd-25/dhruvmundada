@@ -106,3 +106,9 @@ Rollback: each step its own commit on `content/portfolio-rewrite`; revert one.
 ## Log
 
 - 2026-11-22 — audit done, plan written, awaiting approval.
+- 2026-11-22 — answers: Q1 résumé wins (~8s to ~300ms; QC filters bullet dropped),
+  Q2 keep Drive link, Q3 token-cut point dropped. New rule: no company-internal
+  words, general wording as on the résumé. All steps 1–8 done; build, eslint and
+  markdown check pass. Visual check NOT done — browser extension not connected.
+  Section index (`01 /`) skipped: SectionFrame does not know its position; the
+  engineer lens gets a `//` marker instead.

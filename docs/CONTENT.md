@@ -30,6 +30,7 @@ content/
   customers/*.md       who used them (names need permission)
   skills.json
   education.json      shown under PROFILE — `level` is the left-column key
+  achievements.json   ratings and placings, under ACHIEVEMENTS in PROFILE — `label` is the key
   socials.json
 ```
 
@@ -141,10 +142,21 @@ Drop `content/audiences/mentor.json`:
   "tagline": "Optional — overrides identity.tagline for this lens only.",
   "primaryAction": { "label": "book a call", "glyph": "→", "href": "mailto:..." },
   "sections": ["experience", "learnings", "profile"],
+  "highlights": [
+    { "label": "p95 latency", "from": "209ms", "to": "115ms" },
+    { "label": "users served", "to": "5M+" }
+  ],
   "order": 3,
   "default": false
 }
 ```
+
+`highlights` is the figure strip under the tagline on the lens home: four at most,
+optional. `from` renders struck through before `to` for a measured change; leave it
+out for a plain figure. Every figure needs the same source as a bullet would.
+
+The line above the name (`NOW · role · company`) is not a field — it comes from the
+experience record with `current: true` that the lens can see.
 
 `/mentor/` and its section pages exist on the next build. Exactly one audience
 file may set `default: true` — that one is also served at `/`.
