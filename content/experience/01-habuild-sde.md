@@ -8,6 +8,11 @@ url: https://habuild.in/
 current: true
 order: 1
 audiences: ["*"]
+highlights:
+  - { label: "users served", to: "5M+" }
+  - { label: "AI queries handled", to: "70%+" }
+  - { label: "p95 latency", from: "209ms", to: "115ms" }
+  - { label: "endpoint load", from: "~8s", to: "~300ms" }
 points:
   - Designed and shipped a centralized session-management service in **Go** and MongoDB as the single source of truth for the main app and the AI agent layer, with **eligibility-based session delivery** across user cohorts for **5M+ users**.
   - Built a supervisor-routed sub-agent with tool calling and guardrails against fabricated links while migrating a production AI platform to a **distributed multi-agent architecture** (LangGraph, FastAPI, AWS SQS, Redis, Qdrant) — it now handles **70%+ of AI queries** the company receives.

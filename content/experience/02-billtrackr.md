@@ -7,6 +7,11 @@ location: India
 url: https://billtrackr.in
 order: 2
 audiences: ["engineer"]
+highlights:
+  - { label: "billing cycle", from: "55 min", to: "<7 min" }
+  - { label: "projects", to: "800+" }
+  - { label: "invoices/month", to: "150+" }
+  - { label: "clients", to: "3" }
 points:
   - Engineered a B2B SaaS platform replacing error-prone Excel and manual billing for civil engineering consultancies — onboarded **3 clients** managing **800+ projects** and **150+ invoices/month**, cutting bill update and generation from **~55 minutes to under 7 minutes**.
   - Built real-time analytics dashboards and automated invoice generation with **concurrency-safe** sequencing and PDF and Excel exports, giving project-level financial tracking that holds up under concurrent workloads.

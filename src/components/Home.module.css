@@ -17,23 +17,24 @@
 .name[data-font="mono"] {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-weight: 500;
-  font-size: clamp(34px, 5.2vw, 58px);
+  font-size: clamp(40px, 6vw, 72px);
   letter-spacing: -0.022em;
 }
 
 .name[data-font="serif"] {
   font-family: var(--font-serif), Georgia, serif;
   font-weight: 400;
-  font-size: clamp(40px, 6.2vw, 68px);
+  font-size: clamp(46px, 7vw, 84px);
   letter-spacing: -0.01em;
 }
 
 .tagline {
   margin: 24px 0 0;
-  max-width: 32ch;
-  font-size: clamp(17px, 1.7vw, 20px);
-  line-height: 1.55;
-  color: var(--dim);
+  max-width: 34ch;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.5;
+  color: var(--text);
+  opacity: 0.86;
   text-wrap: pretty;
 }
 
@@ -42,9 +43,10 @@
 .where {
   margin: 0;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   color: var(--faint);
+  margin-top: 14px;
 }
 
 .actions {
@@ -62,9 +64,9 @@
   background: var(--accent);
   color: var(--accent-ink);
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.02em;
-  padding: 13px 20px;
+  padding: 14px 22px;
   border-radius: 3px;
   min-height: 44px;
   transition: filter 160ms ease;
@@ -86,9 +88,9 @@
   align-items: center;
   gap: 8px;
   color: var(--text);
-  opacity: 0.55;
+  opacity: 0.6;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 13px;
+  font-size: 14px;
   min-height: 44px;
   transition: opacity 180ms ease;
 }
@@ -110,66 +112,6 @@
   }
 }
 
-/* Proof strip. A row of figure tiles under the tagline — the 15-second scan
-   in one line. A measured change renders old value struck, new in accent. */
-.deltas {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, auto));
-  gap: 0;
-  margin: 34px 0 0;
-  padding: 0;
-  list-style: none;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: color-mix(in srgb, var(--bar) 82%, transparent);
-  backdrop-filter: blur(4px);
-}
-
-.delta {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 14px 22px 13px;
-  border-left: 1px solid var(--border);
-  font-family: var(--font-mono), ui-monospace, monospace;
-}
-
-.delta:first-child {
-  border-left: 0;
-}
-
-.deltaValue {
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-
-.deltaLabel {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--faint);
-  text-transform: uppercase;
-}
-
-.deltaFrom {
-  font-size: 13px;
-  color: var(--faint);
-  text-decoration: line-through;
-  text-decoration-thickness: 1px;
-}
-
-.deltaArrow {
-  font-size: 13px;
-  color: var(--faint);
-}
-
-.deltaTo {
-  color: var(--accent);
-}
-
 /* What he is doing right now, above the name. Reuses the live marker. */
 .now {
   display: flex;
@@ -177,7 +119,7 @@
   gap: 10px;
   margin: 0 0 22px;
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   color: var(--dim);
 }
@@ -223,21 +165,5 @@
   }
   50% {
     opacity: 0;
-  }
-}
-
-@media (max-width: 900px) {
-  .deltas {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-  }
-  .delta:nth-child(3) {
-    border-left: 0;
-  }
-  .delta:nth-child(n + 3) {
-    border-top: 1px solid var(--border);
-  }
-  .deltaValue {
-    font-size: 19px;
   }
 }

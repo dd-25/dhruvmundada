@@ -11,6 +11,21 @@ const ORDERING = {
   status: z.enum(["draft", "published"]).default("published"),
 };
 
+/**
+ * A figure strip above a record's points. `from` renders struck through before
+ * `to`, for a measured change; omit it for a plain figure. Four at most.
+ */
+const highlights = z
+  .array(
+    z.object({
+      label: z.string().min(1),
+      from: z.string().min(1).optional(),
+      to: z.string().min(1),
+    }),
+  )
+  .max(4)
+  .default([]);
+
 /** Which lenses a record appears under. ["*"] means every lens. */
 const audiences = z.array(z.string().min(1)).default(["*"]);
 
@@ -40,20 +55,6 @@ export const audienceSchema = z.object({
   sections: z.array(z.string().min(1)).min(1).max(5),
   /** Social ids to show. Omit to show all of socials.json. */
   socials: z.array(z.string().min(1)).min(1).optional(),
-  /**
-   * The hero proof strip. `from` renders struck through before `to`, for a
-   * measured change; omit it for a plain figure. Four at most — it is a scan.
-   */
-  highlights: z
-    .array(
-      z.object({
-        label: z.string().min(1),
-        from: z.string().min(1).optional(),
-        to: z.string().min(1),
-      }),
-    )
-    .max(4)
-    .default([]),
   order: z.number().int().default(100),
   default: z.boolean().default(false),
 });
@@ -67,6 +68,7 @@ export const experienceSchema = z.object({
   url: z.string().url().optional(),
   /** Exactly one record per collection may set this — the pulsing dot. */
   current: z.boolean().default(false),
+  highlights,
   points: z.array(z.string().min(1)).min(1).max(6),
   stack: z.array(z.string().min(1)).default([]),
   audiences,
@@ -81,6 +83,7 @@ export const productSchema = z.object({
   url: z.string().url().optional(),
   repo: z.string().url().optional(),
   current: z.boolean().default(false),
+  highlights,
   points: z.array(z.string().min(1)).min(1).max(6),
   stack: z.array(z.string().min(1)).default([]),
   audiences,

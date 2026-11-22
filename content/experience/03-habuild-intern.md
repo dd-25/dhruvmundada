@@ -7,6 +7,11 @@ location: Nagpur, India
 url: https://habuild.in/
 order: 3
 audiences: ["*"]
+highlights:
+  - { label: "RAG accuracy", to: "95%" }
+  - { label: "expert workload", to: "−80%" }
+  - { label: "Docker image", from: "3000MB", to: "220MB" }
+  - { label: "build time", from: "9 min", to: "2.5 min" }
 points:
   - Developed a **RAG** proof of concept for query resolution using semantic and hybrid search over a curated knowledge base — **95% response accuracy**, cutting expert workload by **80%**.
   - Optimized Docker builds, cutting image size from **3000MB to 220MB** and build time from **9 minutes to 2.5 minutes**.

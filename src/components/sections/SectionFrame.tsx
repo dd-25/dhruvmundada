@@ -53,6 +53,32 @@ export function Points({ points }: { points: string[] }) {
   );
 }
 
+export function Highlights({
+  items,
+}: {
+  items: { label: string; from?: string; to: string }[];
+}) {
+  if (items.length === 0) return null;
+  return (
+    <ul className={styles.deltas}>
+      {items.map((item) => (
+        <li key={item.label} className={styles.delta}>
+          <span className={styles.deltaValue}>
+            {item.from ? (
+              <>
+                <span className={styles.deltaFrom}>{item.from}</span>
+                <span className={styles.deltaArrow}>→</span>
+              </>
+            ) : null}
+            <span className={styles.deltaTo}>{item.to}</span>
+          </span>
+          <span className={styles.deltaLabel}>{item.label}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function Chips({ items }: { items: string[] }) {
   if (items.length === 0) return null;
   return (

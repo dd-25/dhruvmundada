@@ -37,25 +37,6 @@ export async function Home({ audience }: { audience: Audience }) {
 
       <p className={styles.where}>{identity.location}</p>
 
-      {audience.highlights.length > 0 ? (
-        <ul className={styles.deltas}>
-          {audience.highlights.map((item) => (
-            <li key={item.label} className={styles.delta}>
-              <span className={styles.deltaValue}>
-                {item.from ? (
-                  <>
-                    <span className={styles.deltaFrom}>{item.from}</span>
-                    <span className={styles.deltaArrow}>→</span>
-                  </>
-                ) : null}
-                <span className={styles.deltaTo}>{item.to}</span>
-              </span>
-              <span className={styles.deltaLabel}>{item.label}</span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-
       <div className={styles.actions}>
         <a
           className={styles.cta}

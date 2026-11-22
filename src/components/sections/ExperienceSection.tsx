@@ -1,6 +1,6 @@
 import { forAudience, getExperience } from "@/lib/content/loader";
 
-import { Chips, Points, SectionFrame, EmptySection } from "./SectionFrame";
+import { Chips, EmptySection, Highlights, Points, SectionFrame } from "./SectionFrame";
 import styles from "./Section.module.css";
 
 export default async function ExperienceSection({ audienceId }: { audienceId: string }) {
@@ -37,6 +37,8 @@ export default async function ExperienceSection({ audienceId }: { audienceId: st
                     <span className={styles.soft}>{role.company}</span>
                   )}
                 </h2>
+
+                <Highlights items={role.highlights} />
 
                 <Points points={role.points} />
 
